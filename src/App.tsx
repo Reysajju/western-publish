@@ -10,6 +10,8 @@ import PublishingPage from './pages/services/PublishingPage';
 import MarketingPage from './pages/services/MarketingPage';
 import EditingPage from './pages/services/EditingPage';
 import PricingPage from './pages/PricingPage';
+import TermsPage from './pages/TermsPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
           <Route path="/services/marketing" element={<MarketingPage />} />
           <Route path="/services/editing" element={<EditingPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/refund" element={<RefundPolicyPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </Layout>
     </Router>

@@ -189,6 +189,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <li><Link to="/about" className="text-gray-400 hover:text-white">About</Link></li>
                 <li><Link to="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
                 <li><Link to="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link></li>
+                <li><Link to="/refund" className="text-gray-400 hover:text-white">Refund Policy</Link></li>
               </ul>
             </div>
           </div>

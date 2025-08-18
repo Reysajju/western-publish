@@ -23,6 +23,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         { name: 'Editing', href: '/services/editing' },
       ]
     },
+    { name: 'Pricing', href: '/pricing', current: location.pathname === '/pricing' },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
   ];

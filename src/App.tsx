@@ -9,6 +9,7 @@ import GhostwritingPage from './pages/services/GhostwritingPage';
 import PublishingPage from './pages/services/PublishingPage';
 import MarketingPage from './pages/services/MarketingPage';
 import EditingPage from './pages/services/EditingPage';
+import PricingPage from './pages/PricingPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/services/publishing" element={<PublishingPage />} />
           <Route path="/services/marketing" element={<MarketingPage />} />
           <Route path="/services/editing" element={<EditingPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
         </Routes>
       </Layout>
     </Router>

@@ -108,11 +108,16 @@ const PricingPage: React.FC = () => {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
-        <title>Pricing - Western Publish | Professional Publishing Services</title>
+        <title>How Much Does It Cost to Publish a Book? | Western Publish Pricing</title>
         <meta 
           name="description" 
-          content="Explore our transparent pricing packages for professional publishing services. From essential to bestseller packages, find the perfect publishing solution for your book." 
+          content="Curious about the cost to publish a book? Explore transparent pricing from Western Publish, a dba of Western Publishing LLC. We offer packages for every author's needs, from essential services to bestseller campaigns." 
         />
+        <meta name="keywords" content="book publishing cost, ghostwriting cost, publishing packages, western publish pricing, western publishing llc" />
+        <link rel="canonical" href="https://westernpublish.com/pricing" />
+        <meta property="og:title" content="How Much Does It Cost to Publish a Book? | Western Publish Pricing" />
+        <meta property="og:description" content="Curious about the cost to publish a book? Explore transparent pricing from Western Publish. We offer packages for every author's needs, from essential services to bestseller campaigns." />
+        <meta property="og:url" content="https://westernpublish.com/pricing" />
       </Helmet>
 
       <motion.section 
@@ -128,7 +133,7 @@ const PricingPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            Publishing Packages for Every Author
+            How Much Does Publishing Cost?
           </motion.h1>
           <motion.p 
             className="text-lg text-gray-300 max-w-3xl mx-auto"
@@ -136,7 +141,7 @@ const PricingPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            Transparent pricing with no hidden fees. Choose the package that best fits your publishing goals and budget.
+            At Western Publish (a dba of Western Publishing LLC), we offer transparent pricing with no hidden fees. Choose the package that aligns with your publishing goals and budget.
           </motion.p>
         </div>
       </motion.section>

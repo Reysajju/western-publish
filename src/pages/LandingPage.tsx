@@ -68,12 +68,12 @@ const LandingPage: React.FC = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Western Publish - Professional Ghostwriting, Publishing & Marketing Services</title>
-        <meta name="description" content="Transform your ideas into bestselling books with Western Publish. Professional ghostwriting, complete publishing solutions, and strategic marketing services. 500+ books published, 98% client satisfaction." />
-        <meta name="keywords" content="ghostwriting, book publishing, book marketing, professional writing, bestseller, author services, manuscript editing, book promotion, publishing company" />
+        <title>What is Western Publish? | Your Partner in Publishing Success</title>
+        <meta name="description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers." />
+        <meta name="keywords" content="what is western publish, ghostwriting, book publishing, book marketing, author services, western publishing llc" />
         <link rel="canonical" href="https://westernpublish.com" />
-        <meta property="og:title" content="Western Publish - Professional Ghostwriting, Publishing & Marketing Services" />
-        <meta property="og:description" content="Transform your ideas into bestselling books with Western Publish. Professional ghostwriting, complete publishing solutions, and strategic marketing services." />
+        <meta property="og:title" content="What is Western Publish? | Your Partner in Publishing Success" />
+        <meta property="og:description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers." />
         <meta property="og:url" content="https://westernpublish.com" />
       </Helmet>
       
@@ -89,12 +89,11 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter">
-                From Idea to Bestseller,{' '}
+                What is Western Publish?{' '}
                 <span className="text-blue-300">Your Complete Publishing Partner</span>
               </h1>
               <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed">
-                Transform your ideas into bestselling books with our comprehensive ecosystem. 
-                Professional writers, publishers, and marketers dedicated to your success.
+                We are a comprehensive ecosystem for authors. Western Publish, a dba of Western Publishing LLC, provides professional writers, publishers, and marketers dedicated to your success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link 
@@ -107,20 +106,20 @@ const LandingPage: React.FC = () => {
                   to="/services/publishing" 
                   className="border-2 border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center"
                 >
-                  Explore Services
+                  Explore Our Services
                 </Link>
               </div>
               
               <div className="pt-8">
                 <div className="flex flex-wrap items-center gap-4 mb-4">
                   <div className="flex -space-x-2">
-                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Successful author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Published author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Bestselling author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
                   </div>
                   <div className="text-blue-100">
-                    <span className="font-semibold">500+ authors</span> have published their dreams with us
+                    <span className="font-semibold">500+ authors</span> have realized their publishing dreams with us.
                   </div>
                 </div>
                 <div className="flex items-center space-x-1 text-yellow-400">
@@ -142,7 +141,7 @@ const LandingPage: React.FC = () => {
                 <div className="relative">
                   <img 
                     src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
-                    alt="People reading books happily" 
+                    alt="Author's book on a table" 
                     className="w-full h-48 object-cover rounded-2xl mb-6 shadow-lg"
                   />
                   <div className="absolute -top-3 -right-3 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-3">
@@ -150,11 +149,11 @@ const LandingPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-4">Ready to Begin Your Journey?</h3>
-                  <p className="text-blue-100 mb-6">Join thousands of successful authors who chose Western Publish.</p>
+                  <h3 className="text-2xl font-bold mb-4">Ready to Write Your Success Story?</h3>
+                  <p className="text-blue-100 mb-6">Join hundreds of successful authors who chose Western Publish.</p>
                   <div className="flex items-center justify-center space-x-2">
                     <Award className="h-6 w-6 text-yellow-400" />
-                    <span className="text-sm font-medium">Award-Winning Team</span>
+                    <span className="text-sm font-medium">Award-Winning Publishing Team</span>
                   </div>
                 </div>
               </div>

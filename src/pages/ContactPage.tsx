@@ -62,12 +62,12 @@ const ContactPage: React.FC = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Contact Western Publish - Start Your Publishing Project Today</title>
-        <meta name="description" content="Ready to publish your book? Contact Western Publish for professional ghostwriting, publishing, and marketing services. Get your free consultation today." />
-        <meta name="keywords" content="contact western publish, book publishing consultation, ghostwriting services, publishing quote" />
+        <title>How to Contact Western Publish? | Get in Touch</title>
+        <meta name="description" content="Have a question about your book project? Contact Western Publish, a dba of Western Publishing LLC. We offer professional ghostwriting, publishing, and marketing services. Reach out for a free consultation." />
+        <meta name="keywords" content="contact western publish, book publishing consultation, ghostwriting services, publishing quote, western publishing llc" />
         <link rel="canonical" href="https://westernpublish.com/contact" />
-        <meta property="og:title" content="Contact Western Publish - Start Your Publishing Project Today" />
-        <meta property="og:description" content="Ready to publish your book? Contact Western Publish for professional ghostwriting, publishing, and marketing services." />
+        <meta property="og:title" content="How to Contact Western Publish? | Get in Touch" />
+        <meta property="og:description" content="Have a question about your book project? Contact Western Publish for professional ghostwriting, publishing, and marketing services. Reach out for a free consultation." />
         <meta property="og:url" content="https://westernpublish.com/contact" />
       </Helmet>
       
@@ -82,11 +82,11 @@ const ContactPage: React.FC = () => {
           >
             <MessageCircle className="h-16 w-16 text-blue-300 mx-auto mb-8" />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tighter">
-              Let's Bring Your Story to Life
+              How Can You Reach Us?
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               Ready to start your publishing journey? We're here to answer your questions and help you 
-              choose the perfect publishing package for your goals.
+              find the perfect solution for your book.
             </p>
           </motion.div>
         </div>
@@ -225,10 +225,10 @@ const ContactPage: React.FC = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">How to Get in Touch</h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
                   Have questions about our services? Want to discuss your project before getting started? 
-                  We're here to help and would love to hear from you.
+                  We're here to help. Western Publish is a dba of Western Publishing LLC.
                 </p>
               </div>
 

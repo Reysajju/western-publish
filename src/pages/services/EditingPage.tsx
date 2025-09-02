@@ -1,358 +1,343 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Edit3, FileText, Search, CheckCircle, Star, Award, Target, BookOpen, Zap } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import { Edit3, Search, CheckCircle, Star, Award, Target, BookOpen, Zap, Feather } from 'lucide-react';
 
 const EditingPage: React.FC = () => {
   const editingServices = [
     {
       title: 'Developmental Editing',
-      description: 'Big-picture editing that focuses on structure, content, and overall narrative flow.',
-      features: ['Story structure analysis', 'Character development', 'Plot consistency', 'Pacing optimization'],
-      price: '$0.08 - $0.12 per word',
+      description: 'Big-picture feedback on plot, character arcs, pacing, and structure to ensure your story is compelling and coherent.',
+      features: ['Story structure analysis', 'Character arc development', 'Plot consistency & pacing', 'World-building feedback'],
+      price: '$0.08 - $0.12 / word',
       icon: BookOpen,
-      turnaround: '2-4 weeks',
     },
     {
-      title: 'Line Editing',
-      description: 'Sentence-level editing that improves clarity, flow, and style while preserving your voice.',
-      features: ['Sentence structure', 'Word choice optimization', 'Tone consistency', 'Style enhancement'],
-      price: '$0.05 - $0.08 per word',
+      title: 'Line & Copy Editing',
+      description: 'A comprehensive edit focusing on style, flow, and clarity at the sentence level, combined with correcting technical errors.',
+      features: ['Clarity and flow enhancement', 'Voice and tone consistency', 'Grammar, spelling & punctuation', 'Syntax and word choice'],
+      price: '$0.05 - $0.08 / word',
       icon: Edit3,
-      turnaround: '1-3 weeks',
-    },
-    {
-      title: 'Copy Editing',
-      description: 'Technical editing that corrects grammar, punctuation, and ensures consistency.',
-      features: ['Grammar & punctuation', 'Spelling correction', 'Consistency checks', 'Fact verification'],
-      price: '$0.03 - $0.05 per word',
-      icon: FileText,
-      turnaround: '1-2 weeks',
     },
     {
       title: 'Proofreading',
-      description: 'Final polish to catch any remaining errors before publication.',
-      features: ['Typo detection', 'Formatting consistency', 'Final quality check', 'Publication readiness'],
-      price: '$0.02 - $0.03 per word',
+      description: 'The final quality check to catch any lingering typos, formatting issues, or grammatical errors before publication.',
+      features: ['Typo and spelling correction', 'Punctuation errors', 'Formatting consistency check', 'Final pre-publication polish'],
+      price: '$0.02 - $0.03 / word',
       icon: Search,
-      turnaround: '3-7 days',
     },
   ];
 
   const editingProcess = [
     {
       step: 1,
-      title: 'Manuscript Assessment',
-      description: 'We review your manuscript to determine the appropriate level of editing needed.',
-      duration: '1-2 days',
+      title: 'Submit Your Manuscript',
+      description: 'Share your manuscript with us along with your goals for the project. We’ll perform a free sample edit to assess the required level of editing.',
     },
     {
       step: 2,
-      title: 'Editor Assignment',
-      description: 'Match you with an editor who specializes in your genre and understands your goals.',
-      duration: '1 day',
+      title: 'Match with an Editor',
+      description: 'We handpick a genre-specialist editor from our team whose expertise aligns perfectly with your manuscript and creative vision.',
     },
     {
       step: 3,
-      title: 'Editing Process',
-      description: 'Your editor works through your manuscript with detailed comments and suggestions.',
-      duration: 'Varies by service',
+      title: 'Collaborative Editing',
+      description: 'Your editor meticulously works through your manuscript using track changes, providing insightful comments and actionable feedback.',
     },
     {
       step: 4,
-      title: 'Review & Feedback',
-      description: 'Receive your edited manuscript with comprehensive feedback and recommendations.',
-      duration: '1 day',
+      title: 'Review and Revise',
+      description: 'You receive the edited manuscript and an editorial letter. You then review the changes and suggestions, with our support for any questions.',
     },
-    {
-      step: 5,
-      title: 'Revision Support',
-      description: 'Optional follow-up support to help you implement changes and answer questions.',
-      duration: 'As needed',
-    },
-  ];
-
-  const editorExpertise = [
-    { genre: 'Fiction', specialists: 15, description: 'Novels, short stories, and creative writing' },
-    { genre: 'Non-Fiction', specialists: 12, description: 'Business books, memoirs, and educational content' },
-    { genre: 'Academic', specialists: 8, description: 'Research papers, dissertations, and scholarly works' },
-    { genre: 'Technical', specialists: 6, description: 'Manuals, guides, and specialized documentation' },
-    { genre: 'Children\'s', specialists: 5, description: 'Picture books, middle grade, and young adult' },
-    { genre: 'Self-Help', specialists: 10, description: 'Personal development and instructional books' },
   ];
 
   const testimonials = [
     {
       name: 'Amanda Foster',
       role: 'Romance Novelist',
-      content: 'The developmental editing transformed my manuscript. The editor helped me strengthen character arcs and improve pacing dramatically.',
+      content: 'The developmental edit was a game-changer. My editor saw the potential in my story and gave me the exact feedback I needed to elevate it. The plot is so much stronger now!',
       rating: 5,
     },
     {
       name: 'Robert Chen',
       role: 'Business Author',
-      content: 'Professional, thorough, and insightful. The line editing made my business book much more engaging and readable.',
+      content: 'Incredibly professional and thorough. The line editing sharpened my message and made the entire book more impactful. I couldn\'t be happier with the result.',
       rating: 5,
     },
     {
       name: 'Dr. Sarah Williams',
       role: 'Academic Author',
-      content: 'Exceptional attention to detail. The copy editing caught inconsistencies I never would have noticed. Highly recommended.',
+      content: 'The attention to detail during the copy edit was exceptional. They caught inconsistencies I had missed after a dozen read-throughs. Worth every penny.',
       rating: 5,
     },
   ];
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 100 },
+    },
+  };
+
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50 text-gray-800">
       <Helmet>
         <title>Professional Book Editing Services - Western Publish</title>
-        <meta name="description" content="Professional book editing services including developmental editing, line editing, copy editing, and proofreading. Expert editors for all genres." />
+        <meta name="description" content="Elevate your manuscript with our professional book editing services, including developmental, line, copy editing, and proofreading by genre-specialist editors." />
         <meta name="keywords" content="book editing, developmental editing, line editing, copy editing, proofreading, manuscript editing, professional editor" />
-        <link rel="canonical" href="https://westernpublish.com/services/editing" />
-        <meta property="og:title" content="Professional Book Editing Services - Western Publish" />
-        <meta property="og:description" content="Professional book editing services including developmental editing, line editing, copy editing, and proofreading." />
-        <meta property="og:url" content="https://westernpublish.com/services/editing" />
       </Helmet>
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-teal-900 to-cyan-900 text-white py-16 sm:py-24">
+      <motion.section 
+        className="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-24"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <div className="flex items-center mb-6">
-                <Edit3 className="h-12 w-12 sm:h-16 sm:w-16 text-teal-300 mr-4" />
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold">
-                  Professional Book Editing
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="flex items-center mb-4">
+                <Feather className="h-10 w-10 text-blue-400 mr-4" />
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                  Book Editing Services
                 </h1>
               </div>
-              <p className="text-lg sm:text-xl lg:text-2xl text-teal-100 mb-8 leading-relaxed">
-                Polish your manuscript to perfection with our comprehensive editing services. From developmental editing to final proofreading, we ensure your book meets professional publishing standards.
+              <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+                Transform your rough draft into a polished, professional manuscript. Our expert editors refine your story while preserving your unique authorial voice.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/contact" 
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 text-center"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
-                  Get Your Quote
+                  Get a Free Sample Edit
                 </Link>
                 <Link 
                   to="#services" 
-                  className="border-2 border-teal-300 text-teal-300 hover:bg-teal-300 hover:text-teal-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
+                  className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
                 >
-                  View Services
+                  Explore Services
                 </Link>
               </div>
-            </div>
-            <div className="relative mt-8 lg:mt-0">
+            </motion.div>
+            <motion.div 
+              className="relative"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <img 
-                src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" 
-                alt="Professional book editing and manuscript review" 
-                className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-2xl"
+                src="https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                alt="Editor reviewing a manuscript on a tablet" 
+                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-4 -right-4 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-lg font-bold shadow-lg">
-                <Award className="h-5 w-5 inline mr-2" />
-                Expert Editors
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Editing Services */}
-      <section id="services" className="py-16 sm:py-24 bg-gray-50">
+      <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Comprehensive Editing Services
-            </h2>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Our Editing Services</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              From big-picture story development to final proofreading, we offer every level of editing your manuscript needs.
+              From structural integrity to the final polish, we offer a comprehensive suite of editing services tailored to your manuscript's needs.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {editingServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <div className="bg-teal-100 rounded-lg p-3 mr-4">
-                    <service.icon className="h-8 w-8 text-teal-600" />
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {editingServices.map((service) => (
+              <motion.div key={service.title} variants={itemVariants} className="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div className="flex items-center mb-5">
+                  <div className="bg-blue-100 rounded-full p-3 mr-4">
+                    <service.icon className="h-8 w-8 text-blue-600" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{service.title}</h3>
-                    <p className="text-teal-600 font-medium">{service.turnaround}</p>
-                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">{service.title}</h3>
                 </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <div className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">{service.description}</p>
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-teal-600">{service.price}</span>
+                </ul>
+                <div className="mt-auto text-center">
+                  <div className="text-2xl font-bold text-blue-600 mb-4">{service.price}</div>
                   <Link 
                     to="/contact" 
-                    className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300"
+                    className="bg-gray-800 hover:bg-gray-900 text-white w-full py-3 rounded-lg font-semibold transition-all duration-300"
                   >
-                    Get Quote
+                    Get a Quote
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Editor Expertise */}
-      <section className="py-16 sm:py-24 bg-white">
+      <section className="py-24 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Expert Editors for Every Genre
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Our team includes specialized editors with deep expertise in various genres and writing styles.
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Streamlined Editing Process</h2>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+              A clear, collaborative, and effective process designed to make your manuscript shine.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {editorExpertise.map((expertise, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{expertise.genre}</h3>
-                <div className="text-3xl font-bold text-teal-600 mb-2">{expertise.specialists}</div>
-                <div className="text-sm text-gray-500 mb-3">Specialist Editors</div>
-                <p className="text-gray-600 text-sm">{expertise.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Editing Process */}
-      <section className="py-16 sm:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Editing Process
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              A systematic approach that ensures your manuscript receives the attention and expertise it deserves.
-            </p>
-          </div>
-          
-          <div className="space-y-8">
-            {editingProcess.map((step, index) => (
-              <div key={index} className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 bg-white rounded-xl shadow-lg">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                    {step.step}
+          <motion.div 
+            className="relative"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {editingProcess.map((step) => (
+                <motion.div key={step.step} variants={itemVariants} className="relative text-center">
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-gray-900 mb-4">
+                      {step.step}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-gray-400">{step.description}</p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Choose Our Editors?</h2>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {[
+              { icon: Award, title: "Genre Specialists", desc: "Our editors are experts in their chosen genres, from sci-fi to romance to non-fiction." },
+              { icon: Target, title: "Preserve Your Voice", desc: "We refine and polish your manuscript while ensuring your unique authorial voice remains intact." },
+              { icon: CheckCircle, title: "Satisfaction Guaranteed", desc: "We are committed to your satisfaction and will work with you to ensure the final edit meets your expectations." },
+            ].map(item => (
+              <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
+                <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
+                  <item.icon className="h-12 w-12 text-blue-600" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-2">{step.description}</p>
-                  <div className="flex items-center text-teal-600">
-                    <Zap className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">{step.duration}</span>
-                  </div>
-                </div>
-              </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Our Editing */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-teal-900 to-cyan-900 text-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Why Choose Our Editors?
-            </h2>
-            <p className="text-lg sm:text-xl text-teal-100 max-w-3xl mx-auto">
-              Our editors combine technical expertise with creative insight to enhance your manuscript while preserving your unique voice.
-            </p>
-          </div>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">What Our Authors Say</h2>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <Award className="h-12 w-12 text-teal-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Industry Experience</h3>
-              <p className="text-teal-100">10+ years average experience in professional editing</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <Target className="h-12 w-12 text-teal-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Genre Specialists</h3>
-              <p className="text-teal-100">Editors matched to your specific genre and style</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <CheckCircle className="h-12 w-12 text-teal-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Quality Guarantee</h3>
-              <p className="text-teal-100">Satisfaction guaranteed or we'll revise at no charge</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              What Authors Say About Our Editing
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Real feedback from authors who trusted us to polish their manuscripts to perfection.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 shadow-lg">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {testimonials.map((testimonial) => (
+              <motion.div key={testimonial.name} variants={itemVariants} className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">"{testimonial.content}"</p>
-                <div>
+                <p className="text-gray-700 mb-6 leading-relaxed italic">"{testimonial.content}"</p>
+                <div className="text-right">
                   <div className="font-bold text-gray-900">{testimonial.name}</div>
                   <div className="text-gray-600 text-sm">{testimonial.role}</div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <FileText className="h-16 w-16 text-teal-600 mx-auto mb-8" />
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Ready to Perfect Your Manuscript?
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-            Don't let editing errors diminish your story's impact. Our professional editors will help you create a polished, publication-ready manuscript that readers will love.
+      <section className="py-24 bg-blue-600 text-white">
+        <motion.div 
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Zap className="h-16 w-16 mx-auto mb-6" />
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Perfect Your Manuscript?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Let our expert editors help you create a polished, professional, and publication-ready book that will captivate readers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/contact" 
-              className="bg-teal-600 hover:bg-teal-700 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 text-center"
-            >
-              Get Your Editing Quote
-            </Link>
-            <Link 
-              to="/services/ghostwriting" 
-              className="border-2 border-gray-400 text-gray-700 hover:border-teal-600 hover:text-teal-600 px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
-            >
-              Need Writing Help?
-            </Link>
-          </div>
-        </div>
+          <Link 
+            to="/contact" 
+            className="bg-white text-blue-600 hover:bg-blue-50 px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-block shadow-2xl"
+          >
+            Get Your Free Sample Edit
+          </Link>
+        </motion.div>
       </section>
     </div>
   );

@@ -1,66 +1,51 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { PenTool, BookOpen, Users, Clock, CheckCircle, Star, Award, Target, MessageCircle } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
+import { PenTool, BookOpen, Users, CheckCircle, Star, Award, Target, MessageCircle, BrainCircuit, Heart } from 'lucide-react';
 
 const GhostwritingPage: React.FC = () => {
   const services = [
     {
-      title: 'Business Books',
-      description: 'Establish thought leadership with professionally written business books that showcase your expertise.',
-      features: ['Industry expertise', 'Thought leadership positioning', 'Professional tone', 'Market research'],
-      price: 'Starting at $15,000',
+      title: 'Business & Thought Leadership',
+      description: 'Establish your authority and share your expertise with a professionally written book that builds your brand.',
+      features: ['In-depth industry research', 'Capture your unique voice', 'Structure complex ideas clearly', 'Position you as an expert'],
+      icon: BrainCircuit,
     },
     {
-      title: 'Memoirs & Autobiographies',
-      description: 'Share your life story with compelling narratives that capture your unique voice and experiences.',
-      features: ['Personal storytelling', 'Emotional depth', 'Authentic voice', 'Family legacy'],
-      price: 'Starting at $12,000',
+      title: 'Memoir & Autobiography',
+      description: 'Tell your life story in a compelling narrative that honors your experiences and preserves your legacy.',
+      features: ['Sensitive and in-depth interviews', 'Authentic voice capturing', 'Craft a captivating story arc', 'Preserve your personal legacy'],
+      icon: Heart,
     },
     {
-      title: 'Fiction Novels',
-      description: 'Bring your fictional worlds to life with engaging characters and captivating storylines.',
-      features: ['Character development', 'Plot structure', 'Genre expertise', 'Creative collaboration'],
-      price: 'Starting at $18,000',
-    },
-    {
-      title: 'Self-Help Books',
-      description: 'Transform your knowledge into actionable guidance that helps readers achieve their goals.',
-      features: ['Practical advice', 'Step-by-step guides', 'Reader engagement', 'Expert positioning'],
-      price: 'Starting at $14,000',
+      title: 'Fiction & Story Development',
+      description: 'Bring your imaginative worlds to life. We help you develop plots and characters that captivate readers.',
+      features: ['Collaborative plot development', 'Engaging character creation', 'Genre-specific storytelling', 'From concept to full manuscript'],
+      icon: BookOpen,
     },
   ];
 
   const process = [
     {
       step: 1,
-      title: 'Discovery & Planning',
-      description: 'We conduct in-depth interviews to understand your vision, goals, and unique voice.',
-      duration: '1-2 weeks',
+      title: 'Discovery & Strategy',
+      description: 'We begin with deep-dive interviews to understand your vision, voice, and goals for the book.',
     },
     {
       step: 2,
-      title: 'Research & Outline',
-      description: 'Our team researches your topic and creates a detailed chapter-by-chapter outline.',
-      duration: '2-3 weeks',
+      title: 'Outline & Structure',
+      description: 'Our team creates a comprehensive, chapter-by-chapter outline for your approval, ensuring the structure is solid before writing begins.',
     },
     {
       step: 3,
-      title: 'Writing & Collaboration',
-      description: 'Professional ghostwriters craft your book while maintaining regular communication.',
-      duration: '8-16 weeks',
+      title: 'Collaborative Writing',
+      description: 'Your ghostwriter crafts the manuscript, delivering chapters for your feedback and revisions in a collaborative process.',
     },
     {
       step: 4,
-      title: 'Review & Refinement',
-      description: 'You review each chapter and provide feedback for revisions and improvements.',
-      duration: '2-4 weeks',
-    },
-    {
-      step: 5,
-      title: 'Final Polish',
-      description: 'Professional editing and proofreading ensure your book meets publishing standards.',
-      duration: '1-2 weeks',
+      title: 'Editing & Polishing',
+      description: 'Once the manuscript is complete, it undergoes professional editing and proofreading to ensure it meets the highest publishing standards.',
     },
   ];
 
@@ -68,241 +53,287 @@ const GhostwritingPage: React.FC = () => {
     {
       name: 'Sarah Johnson',
       role: 'CEO, Tech Innovations',
-      content: 'Western Publish helped me transform my business insights into a bestselling book. The ghostwriter captured my voice perfectly.',
+      content: 'Western Publish didn\'t just write a book; they captured my voice and vision perfectly. The process was seamless, professional, and the final product has been a huge asset for my brand.',
       rating: 5,
     },
     {
       name: 'Michael Chen',
       role: 'Retired Military Officer',
-      content: 'They brought my military memoir to life with such authenticity and respect. Highly recommended for personal stories.',
+      content: 'Telling my story was a deeply personal journey, and the ghostwriter handled it with incredible respect and skill. They brought my memoir to life in a way I never could have alone.',
       rating: 5,
     },
     {
       name: 'Dr. Emily Rodriguez',
       role: 'Healthcare Professional',
-      content: 'The team understood my vision for a self-help book and delivered beyond my expectations. Professional and collaborative.',
+      content: 'The team transformed my complex ideas into an accessible and engaging self-help book. Their expertise in structuring content for reader impact was invaluable.',
       rating: 5,
     },
   ];
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 100 },
+    },
+  };
+
   return (
-    <div className="bg-white">
+    <div className="bg-gray-50 text-gray-800">
       <Helmet>
         <title>Professional Ghostwriting Services - Western Publish</title>
-        <meta name="description" content="Transform your ideas into compelling books with our professional ghostwriting services. Business books, memoirs, fiction, and self-help books written by expert ghostwriters." />
-        <meta name="keywords" content="ghostwriting services, professional ghostwriter, business book writing, memoir writing, fiction ghostwriter, book writing services" />
-        <link rel="canonical" href="https://westernpublish.com/services/ghostwriting" />
-        <meta property="og:title" content="Professional Ghostwriting Services - Western Publish" />
-        <meta property="og:description" content="Transform your ideas into compelling books with our professional ghostwriting services." />
-        <meta property="og:url" content="https://westernpublish.com/services/ghostwriting" />
+        <meta name="description" content="Turn your idea into a professionally written book. Our expert ghostwriting services cover business books, memoirs, fiction, and more, capturing your unique voice." />
+        <meta name="keywords" content="ghostwriting services, professional ghostwriter, hire a ghostwriter, book writing services, memoir writer, business book writer" />
       </Helmet>
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-16 sm:py-24">
+      <motion.section 
+        className="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-24"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <div className="flex items-center mb-6">
-                <PenTool className="h-12 w-12 sm:h-16 sm:w-16 text-blue-300 mr-4" />
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold">
-                  Professional Ghostwriting Services
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="flex items-center mb-4">
+                <PenTool className="h-10 w-10 text-blue-400 mr-4" />
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                  Ghostwriting Services
                 </h1>
               </div>
-              <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 mb-8 leading-relaxed">
-                Transform your ideas, experiences, and expertise into compelling books that resonate with readers worldwide. Our expert ghostwriters bring your vision to life while preserving your unique voice.
+              <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+                Have a story to tell or expertise to share? Our professional ghostwriters transform your ideas into a powerful, polished book that reflects your voice and vision.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
                   to="/contact" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 text-center"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
-                  Start Your Book Project
+                  Start Your Book
                 </Link>
                 <Link 
                   to="#process" 
-                  className="border-2 border-blue-300 text-blue-300 hover:bg-blue-300 hover:text-blue-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
+                  className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
                 >
-                  Learn Our Process
+                  Our Process
                 </Link>
               </div>
-            </div>
-            <div className="relative mt-8 lg:mt-0">
+            </motion.div>
+            <motion.div 
+              className="relative"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               <img 
-                src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" 
-                alt="Professional ghostwriting and book creation" 
-                className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-2xl"
+                src="https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                alt="Ghostwriter collaborating with a client" 
+                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-4 -right-4 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-lg font-bold shadow-lg">
-                <Award className="h-5 w-5 inline mr-2" />
-                500+ Books Written
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Services Section */}
-      <section className="py-16 sm:py-24 bg-gray-50">
+      <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Ghostwriting Services We Offer
-            </h2>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Your Story, Professionally Written</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              From business books to personal memoirs, our expert ghostwriters specialize in various genres and formats to meet your specific needs.
+              We specialize in a range of genres, ensuring your project is handled by a writer with relevant expertise and a passion for your subject.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <div className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {services.map((service) => (
+              <motion.div key={service.title} variants={itemVariants} className="bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <div className="flex items-center mb-5">
+                  <div className="bg-blue-100 rounded-full p-3 mr-4">
+                    <service.icon className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">{service.title}</h3>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">{service.description}</p>
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto">
                   <Link 
                     to="/contact" 
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300"
+                    className="bg-gray-800 hover:bg-gray-900 text-white w-full text-center py-3 rounded-lg font-semibold transition-all duration-300"
                   >
-                    Get Quote
+                    Discuss Your Project
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section id="process" className="py-16 sm:py-24 bg-white">
+      <section id="process" className="py-24 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Proven Ghostwriting Process
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              A collaborative approach that ensures your book captures your unique voice while meeting professional publishing standards.
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Proven Ghostwriting Process</h2>
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
+              A transparent, four-step collaborative process that guarantees your vision is realized to the highest standard.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="space-y-8">
-            {process.map((step, index) => (
-              <div key={index} className="flex flex-col md:flex-row items-start md:items-center gap-6 p-6 bg-gray-50 rounded-xl">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                    {step.step}
+          <motion.div 
+            className="relative"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {process.map((step) => (
+                <motion.div key={step.step} variants={itemVariants} className="relative text-center">
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-gray-900 mb-4">
+                      {step.step}
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-gray-400">{step.description}</p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Partner With Our Writers?</h2>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {[
+              { icon: Users, title: "Vetted Professionals", desc: "Our writers are seasoned professionals with years of experience and published works." },
+              { icon: MessageCircle, title: "Collaborative Spirit", desc: "We work with you, not just for you. Your feedback is crucial at every stage." },
+              { icon: Target, title: "Your Voice, Perfected", desc: "Our talent lies in capturing your unique voice and making it shine on the page." },
+            ].map(item => (
+              <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
+                <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
+                  <item.icon className="h-12 w-12 text-blue-600" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-2">{step.description}</p>
-                  <div className="flex items-center text-blue-600">
-                    <Clock className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">{step.duration}</span>
-                  </div>
-                </div>
-              </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Why Choose Our Ghostwriting Team?
-            </h2>
-            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto">
-              Our experienced ghostwriters combine literary expertise with industry knowledge to create books that achieve your goals.
-            </p>
-          </div>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Success Stories</h2>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <Users className="h-12 w-12 text-blue-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Expert Writers</h3>
-              <p className="text-blue-100">15+ years average experience across multiple genres and industries</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <Target className="h-12 w-12 text-blue-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Your Voice, Perfected</h3>
-              <p className="text-blue-100">We capture and enhance your unique voice while maintaining authenticity</p>
-            </div>
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
-              <MessageCircle className="h-12 w-12 text-blue-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-3">Collaborative Process</h3>
-              <p className="text-blue-100">Regular communication and feedback ensure your vision is realized</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 sm:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              What Our Authors Say
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Real feedback from authors who trusted us with their stories and achieved their publishing goals.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {testimonials.map((testimonial) => (
+              <motion.div key={testimonial.name} variants={itemVariants} className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 leading-relaxed">"{testimonial.content}"</p>
-                <div>
+                <p className="text-gray-700 mb-6 leading-relaxed italic">"{testimonial.content}"</p>
+                <div className="text-right">
                   <div className="font-bold text-gray-900">{testimonial.name}</div>
                   <div className="text-gray-600 text-sm">{testimonial.role}</div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <BookOpen className="h-16 w-16 text-blue-600 mx-auto mb-8" />
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Ready to Write Your Book?
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-            Let our expert ghostwriters help you transform your ideas into a professionally written book that achieves your goals and resonates with readers.
+      <section className="py-24 bg-blue-600 text-white">
+        <motion.div 
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Award className="h-16 w-16 mx-auto mb-6" />
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Tell Your Story?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Your book is waiting to be written. Let's start the conversation and turn your idea into a reality.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/contact" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 text-center"
-            >
-              Start Your Ghostwriting Project
-            </Link>
-            <Link 
-              to="/about" 
-              className="border-2 border-gray-400 text-gray-700 hover:border-blue-600 hover:text-blue-600 px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
-            >
-              Meet Our Writers
-            </Link>
-          </div>
-        </div>
+          <Link 
+            to="/contact" 
+            className="bg-white text-blue-600 hover:bg-blue-50 px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-block shadow-2xl"
+          >
+            Schedule a Free Consultation
+          </Link>
+        </motion.div>
       </section>
     </div>
   );

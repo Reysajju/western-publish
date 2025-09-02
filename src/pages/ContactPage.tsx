@@ -1,59 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, BookOpen, Users } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, BookOpen, Users, HelpCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    project: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      // For Netlify forms, we need to submit the form data
-      const form = e.target as HTMLFormElement;
-      const formDataToSubmit = new FormData(form);
-      
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSubmit as any).toString(),
-      });
-      
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        project: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    }
-  };
-
   const contactInfo = [
     {
       icon: Phone,
@@ -88,6 +38,27 @@ const ContactPage: React.FC = () => {
     'Other',
   ];
 
+  const faqs = [
+    {
+      question: 'How long does the publishing process take?',
+      answer: 'The timeline varies by project scope, but typically ranges from 3-6 months for ghostwriting and publishing, 2-3 months for publishing existing manuscripts, and 1-2 months for marketing campaigns.',
+    },
+    {
+      question: "What's included in your publishing packages?",
+      answer: 'Our packages are comprehensive and include editing, formatting, cover design, ISBN assignment, distribution setup, and marketing support. Specific inclusions vary by package level to best suit your needs.',
+    },
+    {
+      question: 'Do you work with first-time authors?',
+      answer: 'Absolutely! We specialize in guiding first-time authors through the entire process, from initial concept to a published book and beyond. Our team is here to support you every step of the way.',
+    },
+    {
+      question: 'What genres do you work with?',
+      answer: 'We work with a wide variety of genres including business books, memoirs, fiction, self-help, academic texts, and more. Our diverse team has expertise across multiple literary fields.',
+    },
+  ];
+
+  const [openFaq, setOpenFaq] = React.useState<number | null>(0);
+
   return (
     <div className="bg-white">
       <Helmet>
@@ -101,18 +72,23 @@ const ContactPage: React.FC = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-24">
+      <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <MessageCircle className="h-16 w-16 text-blue-300 mx-auto mb-8" />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tighter">
               Let's Bring Your Story to Life
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               Ready to start your publishing journey? We're here to answer your questions and help you 
               choose the perfect publishing package for your goals.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -121,7 +97,13 @@ const ContactPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <div className="bg-white rounded-xl p-8 shadow-lg">
+            <motion.div 
+              className="bg-white rounded-xl p-8 shadow-2xl"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Start Your Project</h2>
               <p className="text-gray-600 mb-8">
                 Tell us about your project and we'll get back to you within 24 hours with a personalized proposal.
@@ -130,9 +112,9 @@ const ContactPage: React.FC = () => {
               <form 
                 name="contact"
                 method="POST"
+                action="/?success=true"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
-                onSubmit={handleSubmit} 
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
@@ -150,10 +132,8 @@ const ContactPage: React.FC = () => {
                       type="text"
                       id="name"
                       name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                       placeholder="Your full name"
                     />
                   </div>
@@ -165,10 +145,8 @@ const ContactPage: React.FC = () => {
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -183,9 +161,7 @@ const ContactPage: React.FC = () => {
                       type="tel"
                       id="phone"
                       name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -196,10 +172,8 @@ const ContactPage: React.FC = () => {
                     <select
                       id="service"
                       name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 bg-white"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -219,9 +193,7 @@ const ContactPage: React.FC = () => {
                     type="text"
                     id="project"
                     name="project"
-                    value={formData.project}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                     placeholder="e.g., Business book, Memoir, Fiction novel"
                   />
                 </div>
@@ -233,46 +205,22 @@ const ContactPage: React.FC = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
                     placeholder="Describe your book idea, target audience, timeline, and any specific requirements..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      <span>Send My Project Details</span>
-                    </>
-                  )}
+                  <Send className="h-5 w-5" />
+                  <span>Send My Project Details</span>
                 </button>
-
-                {submitStatus === 'success' && (
-                  <div className="bg-green-600 text-white p-4 rounded-lg">
-                    <p>Thank you! We've received your project details and will contact you within 24 hours.</p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="bg-red-600 text-white p-4 rounded-lg">
-                    <p>Sorry, there was an error sending your message. Please try again or contact us directly.</p>
-                  </div>
-                )}
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Information */}
             <div className="space-y-8">
@@ -286,7 +234,14 @@ const ContactPage: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow-lg">
+                  <motion.div 
+                    key={index} 
+                    className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
                     <div className="bg-blue-100 rounded-lg p-3 w-12 h-12 mb-4">
                       <info.icon className="h-6 w-6 text-blue-600" />
                     </div>
@@ -296,12 +251,18 @@ const ContactPage: React.FC = () => {
                         {detail}
                       </p>
                     ))}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
               {/* Quick Stats */}
-              <div className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-xl p-8">
+              <motion.div 
+                className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-xl p-8 shadow-2xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7 }}
+              >
                 <h3 className="text-2xl font-bold mb-6">Why Choose Western Publish?</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
@@ -318,7 +279,7 @@ const ContactPage: React.FC = () => {
                 <p className="text-blue-100 mt-6 text-center">
                   Join hundreds of successful authors who trusted us with their stories.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -328,6 +289,7 @@ const ContactPage: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <HelpCircle className="h-12 w-12 text-blue-600 mx-auto mb-6" />
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Frequently Asked Questions
             </h2>
@@ -336,38 +298,33 @@ const ContactPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="space-y-8">
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">How long does the publishing process take?</h3>
-              <p className="text-gray-700">
-                Timeline varies by project scope, but typically 3-6 months for ghostwriting and publishing, 
-                2-3 months for publishing existing manuscripts, and 1-2 months for marketing campaigns.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">What's included in your publishing packages?</h3>
-              <p className="text-gray-700">
-                Our packages include editing, formatting, cover design, ISBN assignment, distribution setup, 
-                and marketing support. Specific inclusions vary by package level.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Do you work with first-time authors?</h3>
-              <p className="text-gray-700">
-                Absolutely! We specialize in guiding first-time authors through the entire process, 
-                from initial concept to published book and beyond.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">What genres do you work with?</h3>
-              <p className="text-gray-700">
-                We work with all genres including business books, memoirs, fiction, self-help, 
-                academic texts, and more. Our team has expertise across multiple genres.
-              </p>
-            </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-xl overflow-hidden">
+                <button
+                  className="w-full text-left p-6 flex justify-between items-center"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
+                  <h3 className="text-xl font-semibold text-gray-900">{faq.question}</h3>
+                  <motion.div
+                    animate={{ rotate: openFaq === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  </motion.div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: openFaq === index ? 'auto' : 0 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-700">{faq.answer}</p>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

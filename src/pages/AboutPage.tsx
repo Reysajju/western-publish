@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { BookOpen, Award, Users, Target, Heart, Lightbulb } from 'lucide-react';
+import { BookOpen, Award, Users, Target, Heart, Lightbulb, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AboutPage: React.FC = () => {
   const values = [
@@ -33,20 +34,39 @@ const AboutPage: React.FC = () => {
       role: 'Founder & CEO',
       bio: 'Former publishing executive with 15+ years experience at major publishing houses. Led successful launches of 50+ bestsellers.',
       expertise: ['Publishing Strategy', 'Author Development', 'Market Analysis'],
+      img: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face',
+      email: 'sarah@westernpublish.com',
     },
     {
-      name: 'James Rodriguez',
-      role: 'Head of Ghostwriting',
-      bio: 'Award-winning author and ghostwriter who has written for celebrities, CEOs, and thought leaders across multiple genres.',
-      expertise: ['Ghostwriting', 'Memoir Writing', 'Business Books'],
+      name: 'Rey Garcia',
+      role: 'Senior Strategist',
+      bio: 'A master of narrative and strategy, Rey helps authors craft compelling stories and build powerful author platforms that resonate with audiences.',
+      expertise: ['Narrative Strategy', 'Author Platforming', 'Content Development'],
+      img: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face',
+      email: 'garcia@westernpublish.com',
     },
     {
       name: 'Emily Chen',
       role: 'Marketing Director',
       bio: 'Digital marketing specialist who has helped authors build six-figure businesses through strategic book marketing campaigns.',
       expertise: ['Digital Marketing', 'Book Launches', 'Author Branding'],
+      img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face',
+      email: 'emily@westernpublish.com',
+    },
+    {
+      name: 'Marques William',
+      role: 'Publishing Manager',
+      bio: "A detail-oriented manager with a knack for navigating the complexities of book distribution and production. Marques ensures every author's book meets industry standards and reaches its audience efficiently.",
+      expertise: ['Production Management', 'Global Distribution', 'Quality Assurance'],
+      img: 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=face',
+      email: 'marques@westernpublish.com',
     },
   ];
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
 
   return (
     <div className="bg-white">
@@ -61,18 +81,23 @@ const AboutPage: React.FC = () => {
       </Helmet>
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-24">
+      <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <BookOpen className="h-16 w-16 text-blue-300 mx-auto mb-8" />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tighter">
               About Western Publish
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               We're more than a publishing company – we're your complete literary partner, 
               dedicated to transforming authors' dreams into bestselling realities.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -80,7 +105,12 @@ const AboutPage: React.FC = () => {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
                 Our Story
               </h2>
@@ -103,9 +133,15 @@ const AboutPage: React.FC = () => {
                   books sold, but in dreams realized and stories shared with the world.
                 </p>
               </div>
-            </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl p-8 text-center">
+            </motion.div>
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-10 text-center shadow-xl">
                 <Lightbulb className="h-20 w-20 text-blue-600 mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
@@ -113,7 +149,7 @@ const AboutPage: React.FC = () => {
                   expert guidance, and the tools they need to share their unique stories with global audiences.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -129,17 +165,27 @@ const AboutPage: React.FC = () => {
               These principles guide every decision we make and every relationship we build with our authors.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ staggerChildren: 0.2 }}
+          >
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <motion.div 
+                key={index} 
+                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 text-center transform hover:-translate-y-2"
+                variants={fadeIn}
+              >
                 <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-6">
                   <value.icon className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{value.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -154,16 +200,33 @@ const AboutPage: React.FC = () => {
               Industry veterans who bring decades of publishing expertise and a passion for author success.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center">
-                  <Users className="h-16 w-16 text-blue-600" />
+              <motion.div 
+                key={index} 
+                className="text-center bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <img 
+                  src={member.img} 
+                  alt={member.name} 
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-md border-4 border-white"
+                />
+                <div className="flex-grow">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                  <p className="text-blue-600 font-semibold mb-2">{member.role}</p>
+                  {member.email && (
+                    <a href={`mailto:${member.email}`} className="text-sm text-gray-500 hover:text-blue-600 flex items-center justify-center gap-2 mb-4">
+                      <Mail className="h-4 w-4" />
+                      <span>{member.email}</span>
+                    </a>
+                  )}
+                  <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-blue-600 font-semibold mb-4">{member.role}</p>
-                <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
-                <div className="space-y-2">
+                <div className="space-y-2 mt-auto">
                   <h4 className="font-semibold text-gray-900">Expertise:</h4>
                   <div className="flex flex-wrap justify-center gap-2">
                     {member.expertise.map((skill, skillIndex) => (
@@ -176,7 +239,7 @@ const AboutPage: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -194,22 +257,24 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl lg:text-6xl font-bold text-blue-300 mb-4">500+</div>
-              <div className="text-blue-100 font-medium text-lg">Books Published</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl lg:text-6xl font-bold text-blue-300 mb-4">50+</div>
-              <div className="text-blue-100 font-medium text-lg">Bestsellers Created</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl lg:text-6xl font-bold text-blue-300 mb-4">98%</div>
-              <div className="text-blue-100 font-medium text-lg">Client Satisfaction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl lg:text-6xl font-bold text-blue-300 mb-4">7</div>
-              <div className="text-blue-100 font-medium text-lg">Years of Excellence</div>
-            </div>
+            {[
+              { number: '500+', label: 'Books Published' },
+              { number: '50+', label: 'Bestsellers Created' },
+              { number: '98%', label: 'Client Satisfaction' },
+              { number: '7', label: 'Years of Excellence' },
+            ].map((stat, index) => (
+              <motion.div 
+                key={index} 
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="text-5xl lg:text-6xl font-bold text-blue-300 mb-4">{stat.number}</div>
+                <div className="text-blue-100 font-medium text-lg">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -225,7 +290,7 @@ const AboutPage: React.FC = () => {
           </p>
           <Link 
             to="/contact" 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-block text-center"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 inline-block text-center shadow-lg hover:shadow-xl"
           >
             Start Your Publishing Journey
           </Link>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { BookOpen, PenTool, Megaphone, Award, Users, CheckCircle, UserPlus, Edit3, Printer, Target, Star, Mail } from 'lucide-react';
+import { BookOpen, PenTool, Megaphone, Award, Users, CheckCircle, Edit3, Printer, Target, Star, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const LandingPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +15,6 @@ const LandingPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // For Netlify forms, we need to submit the form data
       const formData = new FormData(e.target as HTMLFormElement);
       
       await fetch('/', {
@@ -60,6 +60,11 @@ const LandingPage: React.FC = () => {
     { number: '50+', label: 'Bestsellers' },
   ];
 
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <div className="bg-white">
       <Helmet>
@@ -74,44 +79,48 @@ const LandingPage: React.FC = () => {
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                From Ghostwriting to Publishing and Marketing,{' '}
-                <span className="text-blue-300">We Cover Everything</span>
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter">
+                From Idea to Bestseller,{' '}
+                <span className="text-blue-300">Your Complete Publishing Partner</span>
               </h1>
               <p className="text-xl lg:text-2xl text-blue-100 leading-relaxed">
-                Transform your ideas into bestselling books with our comprehensive publishing ecosystem. 
-                Professional writers, publishers, and marketers working together for your success.
+                Transform your ideas into bestselling books with our comprehensive ecosystem. 
+                Professional writers, publishers, and marketers dedicated to your success.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link 
                   to="/contact" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl text-center"
                 >
                   Start Your Project
                 </Link>
                 <Link 
-                  to="/about" 
-                  className="border-2 border-blue-300 text-blue-300 hover:bg-blue-300 hover:text-blue-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
+                  to="/services/publishing" 
+                  className="border-2 border-blue-400 text-blue-200 hover:bg-blue-400 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center"
                 >
-                  View Portfolio
+                  Explore Services
                 </Link>
               </div>
               
-              {/* Happy Readers Section */}
               <div className="pt-8">
                 <div className="flex flex-wrap items-center gap-4 mb-4">
                   <div className="flex -space-x-2">
-                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white" />
-                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white" />
-                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white" />
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white" />
+                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy reader" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
                   </div>
                   <div className="text-blue-100">
-                    <span className="font-semibold">500+ authors</span> published their dreams with us
+                    <span className="font-semibold">500+ authors</span> have published their dreams with us
                   </div>
                 </div>
                 <div className="flex items-center space-x-1 text-yellow-400">
@@ -121,45 +130,60 @@ const LandingPage: React.FC = () => {
                   <span className="text-blue-100 ml-2">4.9/5 from 200+ reviews</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
             
-            <div className="relative mt-8 lg:mt-0">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8 border border-white border-opacity-20">
+            <motion.div 
+              className="relative mt-8 lg:mt-0"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-8 border border-white border-opacity-20 shadow-2xl">
                 <div className="relative">
                   <img 
                     src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
                     alt="People reading books happily" 
-                    className="w-full h-48 object-cover rounded-2xl mb-6"
+                    className="w-full h-48 object-cover rounded-2xl mb-6 shadow-lg"
                   />
-                  <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute -top-3 -right-3 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-3">
                     📚 Bestsellers
                   </div>
                 </div>
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-4">Ready to Begin?</h3>
-                  <p className="text-blue-100 mb-6">Join thousands of successful authors who chose Western Publish</p>
+                  <h3 className="text-2xl font-bold mb-4">Ready to Begin Your Journey?</h3>
+                  <p className="text-blue-100 mb-6">Join thousands of successful authors who chose Western Publish.</p>
                   <div className="flex items-center justify-center space-x-2">
                     <Award className="h-6 w-6 text-yellow-400" />
                     <span className="text-sm font-medium">Award-Winning Team</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+          <motion.div 
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ staggerChildren: 0.2 }}
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-600 mb-2">{stat.number}</div>
+              <motion.div 
+                key={index} 
+                className="text-center bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                variants={fadeIn}
+              >
+                <div className="text-4xl sm:text-5xl font-bold text-blue-600 mb-2">{stat.number}</div>
                 <div className="text-gray-600 font-medium text-sm sm:text-base">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -168,54 +192,41 @@ const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Complete Publishing Ecosystem
+              A Complete Publishing Ecosystem
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Every service you need to transform your manuscript into a bestselling book, 
               all under one roof with seamless collaboration.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ staggerChildren: 0.2 }}
+          >
             {features.map((feature, index) => (
-              <div key={index} className="group text-center">
-                <div className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 group-hover:bg-blue-600 transition-all duration-300">
+              <motion.div 
+                key={index} 
+                className="group text-center p-8 rounded-xl transition-all duration-300 hover:shadow-2xl hover:bg-blue-50 transform hover:-translate-y-2 border"
+                variants={fadeIn}
+              >
+                <div className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 group-hover:bg-blue-600 transition-all duration-300 transform group-hover:scale-110">
                   <feature.icon className="h-12 w-12 text-blue-600 group-hover:text-white transition-all duration-300" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          
-          {/* Services Links */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Explore Our Services</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link to="/services/ghostwriting" className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-lg p-4 transition-all duration-300 group">
-                <PenTool className="h-8 w-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <span className="font-semibold text-gray-900">Ghostwriting</span>
-              </Link>
-              <Link to="/services/publishing" className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-lg p-4 transition-all duration-300 group">
-                <BookOpen className="h-8 w-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <span className="font-semibold text-gray-900">Publishing</span>
-              </Link>
-              <Link to="/services/marketing" className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-lg p-4 transition-all duration-300 group">
-                <Megaphone className="h-8 w-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <span className="font-semibold text-gray-900">Marketing</span>
-              </Link>
-              <Link to="/services/editing" className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-400 rounded-lg p-4 transition-all duration-300 group">
-                <Edit3 className="h-8 w-8 text-blue-600 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <span className="font-semibold text-gray-900">Editing</span>
-              </Link>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Detailed Services Section */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Our Core Services
             </h2>
@@ -224,253 +235,148 @@ const LandingPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Ghostwriting Section */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center mb-6">
-                  <div className="bg-blue-600 rounded-lg p-3 mr-4">
-                    <PenTool className="h-8 w-8 text-white" />
+          {[
+            {
+              icon: PenTool,
+              title: 'Professional Ghostwriting',
+              description: 'Transform your ideas into compelling narratives with our team of expert ghostwriters. We help you craft a book that captures your unique voice and resonates with your target audience.',
+              points: [
+                'Business books and thought leadership',
+                'Memoirs and autobiographies',
+                'Fiction novels and series',
+                'Self-help and educational content',
+              ],
+              cta: 'Start Your Ghostwriting Project',
+              color: 'blue',
+              info: {
+                icon: Star,
+                title: 'Why Our Ghostwriters?',
+                points: ['15+ years average experience', 'Published authors in your genre', 'Collaborative writing process', 'Your voice, professionally crafted'],
+              },
+            },
+            {
+              icon: BookOpen,
+              title: 'Complete Publishing',
+              description: 'Navigate the complex world of publishing with confidence. Our services ensure your book reaches readers through all major platforms while maintaining the highest quality standards.',
+              points: [
+                'Global distribution network',
+                'Professional formatting and layout',
+                'Quality control and proofreading',
+                'Royalty optimization strategies',
+              ],
+              cta: 'Publish Your Book',
+              color: 'indigo',
+              info: {
+                icon: Printer,
+                title: 'Publishing Excellence',
+                points: ['Amazon, Barnes & Noble, Apple Books', 'Print-on-demand and eBook formats', 'Professional cover design', 'ISBN and copyright registration'],
+              },
+              reverse: true,
+            },
+            {
+              icon: Megaphone,
+              title: 'Strategic Marketing',
+              description: 'Launch your book with impact and sustain long-term success. Our data-driven marketing strategies help you build an author platform and connect with readers.',
+              points: [
+                'Amazon bestseller campaigns',
+                'Social media marketing',
+                'Author website and branding',
+                'Media outreach and PR campaigns',
+              ],
+              cta: 'Launch Your Marketing Campaign',
+              color: 'purple',
+              info: {
+                icon: Target,
+                title: 'Marketing That Works',
+                points: ['300% average sales increase', 'Bestseller list placements', 'Targeted audience building', 'ROI-focused campaigns'],
+              },
+            },
+            {
+              icon: Edit3,
+              title: 'Professional Editing',
+              description: 'Polish your manuscript to perfection with our comprehensive editing services. Our experienced editors ensure your book meets industry standards while preserving your unique voice.',
+              points: [
+                'Structural and content editing',
+                'Grammar and style refinement',
+                'Consistency and flow optimization',
+                'Final proofreading and quality assurance',
+              ],
+              cta: 'Get Professional Editing',
+              color: 'green',
+              info: {
+                icon: Edit3,
+                title: 'Editorial Excellence',
+                points: ['Developmental editing', 'Line editing and copyediting', 'Proofreading and fact-checking', 'Style guide compliance'],
+              },
+              reverse: true,
+            },
+          ].map((service, index) => (
+            <motion.div 
+              key={index} 
+              className="mb-24"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className={`order-1 ${service.reverse ? 'lg:order-2' : ''}`}>
+                  <div className="flex items-center mb-6">
+                    <div className={`bg-${service.color}-600 rounded-lg p-3 mr-4`}>
+                      <service.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className={`text-3xl lg:text-4xl font-bold text-gray-900`}>{service.title}</h3>
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">Professional Ghostwriting</h3>
+                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">{service.description}</p>
+                  <div className="space-y-3 mb-8">
+                    {service.points.map((point, i) => (
+                      <div key={i} className="flex items-center">
+                        <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
+                        <span className="text-gray-700">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link 
+                    to="/contact" 
+                    className={`bg-${service.color}-600 hover:bg-${service.color}-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1`}
+                  >
+                    {service.cta}
+                  </Link>
                 </div>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Transform your ideas into compelling narratives with our team of expert ghostwriters. Whether you have a complete concept or just a spark of inspiration, we'll help you craft a book that captures your unique voice and resonates with your target audience.
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Business books and thought leadership content</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Memoirs and autobiographies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Fiction novels and series</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Self-help and educational content</span>
-                  </div>
-                </div>
-                <Link 
-                  to="/contact" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
-                >
-                  Start Your Ghostwriting Project
-                </Link>
-              </div>
-              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl p-8">
-                <div className="text-center">
-                  <Star className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Why Choose Our Ghostwriters?</h4>
-                  <div className="space-y-4 text-gray-700">
-                    <p>✓ 15+ years average experience</p>
-                    <p>✓ Published authors in your genre</p>
-                    <p>✓ Collaborative writing process</p>
-                    <p>✓ Your voice, professionally crafted</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Publishing Section */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl p-8 order-2 lg:order-1">
-                <div className="text-center">
-                  <Printer className="h-16 w-16 text-indigo-600 mx-auto mb-6" />
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Publishing Excellence</h4>
-                  <div className="space-y-4 text-gray-700">
-                    <p>✓ Amazon, Barnes & Noble, Apple Books</p>
-                    <p>✓ Print-on-demand and eBook formats</p>
-                    <p>✓ Professional cover design</p>
-                    <p>✓ ISBN and copyright registration</p>
-                  </div>
-                </div>
-              </div>
-              <div className="order-1 lg:order-2">
-                <div className="flex items-center mb-6">
-                  <div className="bg-indigo-600 rounded-lg p-3 mr-4">
-                    <BookOpen className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">Complete Publishing Solutions</h3>
-                </div>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Navigate the complex world of publishing with confidence. Our comprehensive publishing services ensure your book reaches readers through all major platforms while maintaining the highest quality standards.
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Global distribution network</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Professional formatting and layout</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Quality control and proofreading</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Royalty optimization strategies</span>
-                  </div>
-                </div>
-                <Link 
-                  to="/contact" 
-                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
-                >
-                  Publish Your Book
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Marketing Section */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center mb-6">
-                  <div className="bg-purple-600 rounded-lg p-3 mr-4">
-                    <Megaphone className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">Strategic Marketing</h3>
-                </div>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Launch your book with impact and sustain long-term success. Our data-driven marketing strategies help you build an author platform, connect with readers, and achieve bestseller status across multiple categories.
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Amazon bestseller campaigns</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Social media marketing strategies</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Author website and branding</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Media outreach and PR campaigns</span>
-                  </div>
-                </div>
-                <Link 
-                  to="/contact" 
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
-                >
-                  Launch Your Marketing Campaign
-                </Link>
-              </div>
-              <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl p-8">
-                <div className="text-center">
-                  <Target className="h-16 w-16 text-purple-600 mx-auto mb-6" />
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Marketing That Works</h4>
-                  <div className="space-y-4 text-gray-700">
-                    <p>✓ 300% average sales increase</p>
-                    <p>✓ Bestseller list placements</p>
-                    <p>✓ Targeted audience building</p>
-                    <p>✓ ROI-focused campaigns</p>
+                <div className={`bg-gradient-to-br from-${service.color}-50 to-${service.color}-100 rounded-3xl p-8 order-2 ${service.reverse ? 'lg:order-1' : ''}`}>
+                  <div className="text-center">
+                    <service.info.icon className={`h-16 w-16 text-${service.color}-600 mx-auto mb-6`} />
+                    <h4 className="text-2xl font-bold text-gray-900 mb-4">{service.info.title}</h4>
+                    <div className="space-y-4 text-gray-700">
+                      {service.info.points.map((point, i) => <p key={i}>✓ {point}</p>)}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Editing Section */}
-          <div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-gradient-to-br from-green-100 to-teal-100 rounded-3xl p-8 order-2 lg:order-1">
-                <div className="text-center">
-                  <Edit3 className="h-16 w-16 text-green-600 mx-auto mb-6" />
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Editorial Excellence</h4>
-                  <div className="space-y-4 text-gray-700">
-                    <p>✓ Developmental editing</p>
-                    <p>✓ Line editing and copyediting</p>
-                    <p>✓ Proofreading and fact-checking</p>
-                    <p>✓ Style guide compliance</p>
-                  </div>
-                </div>
-              </div>
-              <div className="order-1 lg:order-2">
-                <div className="flex items-center mb-6">
-                  <div className="bg-green-600 rounded-lg p-3 mr-4">
-                    <Edit3 className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">Professional Editing</h3>
-                </div>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Polish your manuscript to perfection with our comprehensive editing services. Our experienced editors ensure your book meets industry standards while preserving your unique voice and message.
-                </p>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Structural and content editing</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Grammar and style refinement</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Consistency and flow optimization</span>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-3" />
-                    <span className="text-gray-700">Final proofreading and quality assurance</span>
-                  </div>
-                </div>
-                <Link 
-                  to="/contact" 
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block"
-                >
-                  Get Professional Editing
-                </Link>
-              </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* Email Collection Section */}
-      <section className="py-16 sm:py-24 bg-gradient-to-r from-indigo-900 to-blue-900 text-white" id="newsletter-signup">
+      <section className="py-24 bg-gradient-to-r from-indigo-900 to-blue-900 text-white" id="newsletter-signup">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Mail className="h-12 w-12 sm:h-16 sm:w-16 text-blue-300 mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7 }}
+          >
+            <Mail className="h-16 w-16 text-blue-300 mx-auto mb-6" />
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Join Our Publishing Newsletter
             </h2>
-            <p className="text-lg sm:text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Get exclusive publishing tips, industry insights, success stories, and special offers delivered to your inbox weekly.
             </p>
-            
-            {/* Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4">
-                <BookOpen className="h-8 w-8 text-blue-300 mx-auto mb-2" />
-                <h3 className="font-semibold mb-1">Publishing Tips</h3>
-                <p className="text-sm text-blue-200">Weekly insights from industry experts</p>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4">
-                <Star className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
-                <h3 className="font-semibold mb-1">Success Stories</h3>
-                <p className="text-sm text-blue-200">Learn from bestselling authors</p>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4">
-                <Award className="h-8 w-8 text-green-400 mx-auto mb-2" />
-                <h3 className="font-semibold mb-1">Exclusive Offers</h3>
-                <p className="text-sm text-blue-200">Special discounts for subscribers</p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
           
-          {/* Newsletter Form */}
           <div className="max-w-md mx-auto">
             <form 
               name="newsletter"
@@ -481,10 +387,8 @@ const LandingPage: React.FC = () => {
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="newsletter" />
-              <div style={{ display: 'none' }}>
-                <label>
-                  Don't fill this out if you're human: <input name="bot-field" />
-                </label>
+              <div className="hidden">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </div>
               <div>
                 <input
@@ -493,10 +397,9 @@ const LandingPage: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
-                  className="w-full px-4 py-3 text-gray-900 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                  className="w-full px-5 py-3 text-gray-900 bg-white/90 rounded-lg border-2 border-transparent focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-300/50 transition-all duration-300"
                 />
               </div>
-              
               <div>
                 <input
                   type="email"
@@ -505,14 +408,13 @@ const LandingPage: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full px-4 py-3 text-gray-900 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-200"
+                  className="w-full px-5 py-3 text-gray-900 bg-white/90 rounded-lg border-2 border-transparent focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-300/50 transition-all duration-300"
                 />
               </div>
-              
               <button
                 type="submit"
                 disabled={isSubmitting || !email.trim()}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed shadow-lg"
               >
                 {isSubmitting ? (
                   <>
@@ -522,7 +424,7 @@ const LandingPage: React.FC = () => {
                 ) : (
                   <>
                     <Mail className="h-5 w-5" />
-                    <span>Subscribe to Newsletter</span>
+                    <span>Subscribe Now</span>
                   </>
                 )}
               </button>
@@ -530,10 +432,9 @@ const LandingPage: React.FC = () => {
               {submitStatus === 'success' && (
                 <div className="bg-green-600 text-white p-3 rounded-lg flex items-center space-x-2">
                   <CheckCircle className="h-5 w-5" />
-                  <span>Successfully subscribed! Check your email for confirmation.</span>
+                  <span>Success! Check your email to confirm.</span>
                 </div>
               )}
-
               {submitStatus === 'error' && (
                 <div className="bg-red-600 text-white p-3 rounded-lg">
                   <span>Error subscribing. Please try again.</span>
@@ -541,38 +442,30 @@ const LandingPage: React.FC = () => {
               )}
             </form>
           </div>
-          
-          <div className="text-center mt-12">
-            <p className="text-blue-200 text-sm">
-              📧 Your email is safe with us. We never spam and you can unsubscribe anytime. 
-              <br className="hidden sm:block" />
-              Join 10,000+ authors already subscribed!
-            </p>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Users className="h-16 w-16 text-blue-600 mx-auto mb-8" />
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Ready to Publish Your Story?
+            Ready to Publish Your Masterpiece?
           </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl text-gray-600 mb-10 leading-relaxed">
             Join hundreds of successful authors who trusted Western Publish with their literary journey. 
             From concept to bestseller, we're your complete publishing partner.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               to="/contact" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 text-center"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl text-center"
             >
               Get Started Today
             </Link>
             <Link 
               to="/contact" 
-              className="border-2 border-gray-400 text-gray-700 hover:border-blue-600 hover:text-blue-600 px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 text-center"
+              className="bg-gray-100 text-gray-800 hover:bg-gray-200 px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center"
             >
               Schedule a Consultation
             </Link>

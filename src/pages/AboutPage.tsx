@@ -71,12 +71,12 @@ const AboutPage: React.FC = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>About Western Publish - Professional Publishing Team & Services</title>
-        <meta name="description" content="Learn about Western Publish's experienced team of publishing professionals. Founded in 2018, we've helped 500+ authors publish their books with 98% client satisfaction." />
-        <meta name="keywords" content="about western publish, publishing team, professional editors, ghostwriters, book marketing experts" />
+        <title>Who is Western Publish? | Our Story, Mission, and Team</title>
+        <meta name="description" content="Discover who Western Publish is. We are a team of publishing experts dedicated to helping authors succeed. Learn about our story, our mission to democratize publishing, and meet the professionals who can bring your book to life." />
+        <meta name="keywords" content="about western publish, publishing team, professional editors, ghostwriters, book marketing experts, author services" />
         <link rel="canonical" href="https://westernpublish.com/about" />
-        <meta property="og:title" content="About Western Publish - Professional Publishing Team & Services" />
-        <meta property="og:description" content="Learn about Western Publish's experienced team of publishing professionals. Founded in 2018, we've helped 500+ authors publish their books." />
+        <meta property="og:title" content="Who is Western Publish? | Our Story, Mission, and Team" />
+        <meta property="og:description" content="Discover who Western Publish is. We are a team of publishing experts dedicated to helping authors succeed. Learn about our story, our mission to democratize publishing, and meet the professionals who can bring your book to life." />
         <meta property="og:url" content="https://westernpublish.com/about" />
       </Helmet>
       
@@ -91,11 +91,10 @@ const AboutPage: React.FC = () => {
           >
             <BookOpen className="h-16 w-16 text-blue-300 mx-auto mb-8" />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tighter">
-              About Western Publish
+              Who is Western Publish?
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              We're more than a publishing company – we're your complete literary partner, 
-              dedicated to transforming authors' dreams into bestselling realities.
+              We are your dedicated literary partner, committed to turning author's dreams into bestselling realities.
             </p>
           </motion.div>
         </div>
@@ -112,25 +111,17 @@ const AboutPage: React.FC = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-                Our Story
+                What is the Story Behind Western Publish?
               </h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Founded in 2018, Western Publish emerged from a simple observation: talented authors 
-                  were struggling to navigate the complex publishing landscape alone. Traditional publishers 
-                  were increasingly selective, while self-publishing left authors overwhelmed by the 
-                  technical and marketing challenges.
+                  Western Publish was founded in 2018 to solve a key problem for authors: navigating the complex publishing world. We noticed that talented writers were often stuck between the high barriers of traditional publishing and the overwhelming challenges of self-publishing.
                 </p>
                 <p>
-                  We saw an opportunity to bridge this gap by creating a comprehensive ecosystem where 
-                  authors could access professional ghostwriting, publishing, and marketing services 
-                  under one roof. Our integrated approach ensures quality consistency and seamless 
-                  collaboration throughout the entire publishing journey.
+                  Our goal was to create a supportive ecosystem. We offer everything an author needs—professional ghostwriting, editing, publishing, and marketing—all in one place. This integrated approach ensures a smooth journey from manuscript to market, maintaining high quality at every step.
                 </p>
                 <p>
-                  Today, we've helped over 500 authors publish their works, with many achieving bestseller 
-                  status and building sustainable author businesses. Our success is measured not just in 
-                  books sold, but in dreams realized and stories shared with the world.
+                  Since our founding, we have empowered over 500 authors to see their books published, with many hitting bestseller lists and building successful careers. For us, success isn't just about sales; it's about bringing important stories to the world and helping authors achieve their dreams.
                 </p>
               </div>
             </motion.div>
@@ -143,10 +134,9 @@ const AboutPage: React.FC = () => {
             >
               <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-10 text-center shadow-xl">
                 <Lightbulb className="h-20 w-20 text-blue-600 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">What is Our Mission?</h3>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  To democratize professional publishing by providing authors with world-class services, 
-                  expert guidance, and the tools they need to share their unique stories with global audiences.
+                  Our mission is to make professional publishing accessible to all authors. We provide top-tier services, expert advice, and the tools needed to share their stories with a global audience.
                 </p>
               </div>
             </motion.div>

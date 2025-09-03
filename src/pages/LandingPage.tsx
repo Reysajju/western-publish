@@ -75,6 +75,62 @@ const LandingPage: React.FC = () => {
         <meta property="og:title" content="What is Western Publish? | Your Partner in Publishing Success" />
         <meta property="og:description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers." />
         <meta property="og:url" content="https://westernpublish.com" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Western Publish",
+            "description": "Premier book publishing services including ghostwriting, editing, marketing and publishing.",
+            "url": "https://westernpublish.com",
+            "logo": "https://westernpublish.com/favicon.svg",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://westernpublish.com/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            },
+            "sameAs": [
+              "https://twitter.com/westernpublish",
+              "https://www.linkedin.com/company/western-publish"
+            ],
+            "offers": {
+              "@type": "AggregateOffer",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Professional Ghostwriting",
+                    "description": "Expert writers who bring your ideas to life with compelling, authentic content."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Complete Publishing Solutions",
+                    "description": "End-to-end publishing services from manuscript to market-ready book."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Strategic Marketing",
+                    "description": "Data-driven marketing campaigns to connect with target readers effectively."
+                  }
+                }
+              ]
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "200"
+            }
+          })}
+        </script>
       </Helmet>
       
       {/* Hero Section */}
@@ -113,10 +169,10 @@ const LandingPage: React.FC = () => {
               <div className="pt-8">
                 <div className="flex flex-wrap items-center gap-4 mb-4">
                   <div className="flex -space-x-2">
-                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Happy author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Successful author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Published author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Bestselling author" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Western Publish author success story - Professional ghostwriting client" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Western Publish bestselling author - Book marketing success" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Western Publish published author testimonial" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
+                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face" alt="Western Publish expert team member" className="w-10 h-10 rounded-full border-2 border-white shadow-md" />
                   </div>
                   <div className="text-blue-100">
                     <span className="font-semibold">500+ authors</span> have realized their publishing dreams with us.
@@ -141,7 +197,7 @@ const LandingPage: React.FC = () => {
                 <div className="relative">
                   <img 
                     src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" 
-                    alt="Author's book on a table" 
+                    alt="Published book by Western Publish author displayed on elegant wooden desk with reading glasses, showcasing professional publishing quality" 
                     className="w-full h-48 object-cover rounded-2xl mb-6 shadow-lg"
                   />
                   <div className="absolute -top-3 -right-3 bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-3">

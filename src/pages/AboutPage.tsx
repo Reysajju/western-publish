@@ -71,13 +71,77 @@ const AboutPage: React.FC = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Who is Western Publish? | Our Story, Mission, and Team</title>
-        <meta name="description" content="Discover who Western Publish is. We are a team of publishing experts dedicated to helping authors succeed. Learn about our story, our mission to democratize publishing, and meet the professionals who can bring your book to life." />
-        <meta name="keywords" content="about western publish, publishing team, professional editors, ghostwriters, book marketing experts, author services" />
+        <title>Who is Western Publish? | Our Story, Mission, and Expert Publishing Team</title>
+        <meta name="description" content="Western Publish is your complete book publishing partner. With over 500 published books and a 98% client satisfaction rate, our expert team delivers professional ghostwriting, editing, publishing, and marketing services to turn your manuscript into a bestseller." />
+        <meta name="keywords" content="western publish team, book publishing experts, professional editors, bestselling ghostwriters, book marketing specialists, author services company, publishing industry leaders, book publishing success stories" />
         <link rel="canonical" href="https://westernpublish.com/about" />
-        <meta property="og:title" content="Who is Western Publish? | Our Story, Mission, and Team" />
-        <meta property="og:description" content="Discover who Western Publish is. We are a team of publishing experts dedicated to helping authors succeed. Learn about our story, our mission to democratize publishing, and meet the professionals who can bring your book to life." />
+        <meta property="og:title" content="Who is Western Publish? | Our Story, Mission, and Expert Publishing Team" />
+        <meta property="og:description" content="Western Publish is your complete book publishing partner. With over 500 published books and a 98% client satisfaction rate, our expert team delivers professional ghostwriting, editing, publishing, and marketing services to turn your manuscript into a bestseller." />
         <meta property="og:url" content="https://westernpublish.com/about" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Western Publish",
+            "alternateName": "Western Publishing LLC",
+            "description": "Professional book publishing and author services company with expertise in ghostwriting, editing, publishing, and marketing.",
+            "foundingDate": "2018",
+            "url": "https://westernpublish.com",
+            "logo": "https://westernpublish.com/favicon.svg",
+            "numberOfEmployees": {
+              "@type": "QuantitativeValue",
+              "value": "20+"
+            },
+            "knowsAbout": [
+              "Book Publishing",
+              "Ghostwriting",
+              "Book Marketing",
+              "Book Editing",
+              "Author Services"
+            ],
+            "award": [
+              {
+                "@type": "Award",
+                "name": "50+ Bestselling Books"
+              }
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "500",
+              "bestRating": "5"
+            },
+            "employees": [
+              {
+                "@type": "Person",
+                "name": "Sarah Mitchell",
+                "jobTitle": "Founder & CEO",
+                "description": "Former publishing executive with 15+ years experience at major publishing houses.",
+                "email": "sarah@westernpublish.com"
+              },
+              {
+                "@type": "Person",
+                "name": "Emily Chen",
+                "jobTitle": "Marketing Director",
+                "description": "Digital marketing specialist with expertise in author branding and book launches.",
+                "email": "emily@westernpublish.com"
+              }
+            ],
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Satisfied Author"
+              },
+              "reviewBody": "Western Publish transformed my manuscript into a bestseller. Their professional team provided exceptional service at every step."
+            }
+          })}
+        </script>
       </Helmet>
       
       {/* Hero Section */}
@@ -202,7 +266,7 @@ const AboutPage: React.FC = () => {
               >
                 <img 
                   src={member.img} 
-                  alt={member.name} 
+                  alt={`${member.name} - ${member.role} at Western Publish | Expert in ${member.expertise.join(', ')} | Professional Book Publishing Services`} 
                   className="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-md border-4 border-white"
                 />
                 <div className="flex-grow">

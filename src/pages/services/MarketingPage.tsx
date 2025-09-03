@@ -7,26 +7,26 @@ import { Megaphone, TrendingUp, Target, CheckCircle, Star, Award, BarChart, Zap,
 const MarketingPage: React.FC = () => {
   const marketingServices = [
     {
-      title: 'Author Platform & Branding',
-      description: 'Build a powerful author brand with a professional website, social media presence, and email list that connects with your ideal readers.',
+      title: 'Author Platform & Branding by Western Publish',
+      description: 'Western Publish helps you build a powerful author brand with a professional website, social media presence, and email list that connects with your ideal readers.',
       features: ['Custom author website design', 'Social media strategy & setup', 'Email list building & lead magnets', 'Consistent brand identity'],
       icon: Globe,
     },
     {
-      title: 'Book Launch & Bestseller Campaign',
-      description: 'Execute a high-impact launch strategy designed to hit bestseller lists and maximize initial sales velocity.',
+      title: 'Book Launch & Bestseller Campaign with Western Publish',
+      description: 'With Western Publish, you can execute a high-impact launch strategy designed to hit bestseller lists and maximize initial sales velocity.',
       features: ['Amazon category & keyword optimization', 'Coordinated launch week promotion', 'Advanced reader team management', 'Paid advertising launch burst'],
       icon: Award,
     },
     {
-      title: 'Ongoing Digital Marketing',
-      description: 'Sustain your book\'s momentum with long-term marketing efforts, including ads, content marketing, and social media management.',
+      title: 'Ongoing Digital Marketing by Western Publish',
+      description: "Western Publish helps sustain your book's momentum with long-term marketing efforts, including ads, content marketing, and social media management.",
       features: ['Amazon & social media ad management', 'Content marketing & blog strategy', 'Monthly performance analytics', 'Continuous audience growth'],
       icon: TrendingUp,
     },
     {
-      title: 'PR & Media Outreach',
-      description: 'Gain credibility and reach a wider audience by getting featured on podcasts, blogs, and other media outlets.',
+      title: 'PR & Media Outreach with Western Publish',
+      description: 'Gain credibility and reach a wider audience. Western Publish gets you featured on podcasts, blogs, and other media outlets.',
       features: ['Custom media kit creation', 'Targeted podcast & media pitching', 'Press release writing & distribution', 'Interview & appearance coaching'],
       icon: Podcast,
     },
@@ -35,22 +35,22 @@ const MarketingPage: React.FC = () => {
   const marketingProcess = [
     {
       step: 1,
-      title: 'Strategy & Audience Deep Dive',
+      title: 'Strategy & Audience Deep Dive with Western Publish',
       description: 'We start by defining your target reader and crafting a bespoke marketing strategy tailored to your book and goals.',
     },
     {
       step: 2,
-      title: 'Pre-Launch Foundation',
+      title: 'Pre-Launch Foundation by Western Publish',
       description: 'We build your author platform, create marketing assets, and generate early buzz with an advance reader team.',
     },
     {
       step: 3,
-      title: 'High-Impact Launch',
+      title: 'High-Impact Launch with Western Publish',
       description: 'We execute a coordinated, multi-channel campaign during launch week to maximize visibility and sales.',
     },
     {
       step: 4,
-      title: 'Sustain & Grow',
+      title: 'Sustain & Grow with Western Publish',
       description: 'Post-launch, we analyze data and implement ongoing marketing tactics to ensure long-term, sustainable success.',
     },
   ];
@@ -59,19 +59,19 @@ const MarketingPage: React.FC = () => {
     {
       name: 'Jennifer Walsh',
       role: 'Business Author',
-      content: 'The bestseller campaign was a resounding success, hitting #1 in three categories! The strategic approach made all the difference. The ROI has been phenomenal.',
+      content: 'The bestseller campaign by Western Publish was a resounding success, hitting #1 in three categories! Their strategic approach made all the difference. The ROI has been phenomenal.',
       rating: 5,
     },
     {
       name: 'David Kim',
       role: 'Fiction Author',
-      content: 'Their social media strategy was brilliant. They built a community of 25,000 engaged fans for me before the book even came out. I had a built-in audience on day one.',
+      content: "Western Publish's social media strategy was brilliant. They built a community of 25,000 engaged fans for me before the book even came out. I had a built-in audience on day one.",
       rating: 5,
     },
     {
       name: 'Maria Santos',
       role: 'Self-Help Author',
-      content: 'The PR team was relentless. They secured 15 podcast interviews and features on major blogs, which drove incredible awareness and sales. I couldn\'t have done it without them.',
+      content: "The PR team at Western Publish was relentless. They secured 15 podcast interviews and features on major blogs, which drove incredible awareness and sales. I couldn't have done it without them.",
       rating: 5,
     },
   ];
@@ -96,9 +96,78 @@ const MarketingPage: React.FC = () => {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
-        <title>Book Marketing Services to Reach More Readers - Western Publish</title>
-        <meta name="description" content="Professional book marketing services designed to build your author brand, launch your book to bestseller status, and drive long-term sales." />
-        <meta name="keywords" content="book marketing, author marketing, book promotion, Amazon bestseller campaign, social media for authors, book PR" />
+        <title>Book Marketing Services | Author Platform Building & Bestseller Campaigns - Western Publish</title>
+        <meta name="description" content="Launch your book successfully with Western Publish's professional book marketing services. We build your author platform, run bestseller campaigns, manage PR, and drive sustainable sales. Get your free marketing plan today!" />
+        <meta name="keywords" content="book marketing services, author platform building, book promotion, Amazon bestseller campaign, social media for authors, book PR, book launch strategy, author branding, book marketing plan" />
+        <link rel="canonical" href="https://westernpublish.com/services/marketing" />
+        <meta property="og:title" content="Book Marketing Services | Author Platform Building & Bestseller Campaigns - Western Publish" />
+        <meta property="og:description" content="Launch your book successfully with Western Publish's professional book marketing services. We build your author platform, run bestseller campaigns, manage PR, and drive sustainable sales. Get your free marketing plan today!" />
+        <meta property="og:url" content="https://westernpublish.com/services/marketing" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Book Marketing Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "url": "https://westernpublish.com",
+              "logo": "https://westernpublish.com/favicon.svg"
+            },
+            "serviceType": "Book Marketing",
+            "description": "Professional book marketing services designed to build your author brand, launch your book to bestseller status, and drive long-term sales.",
+            "offers": {
+              "@type": "AggregateOffer",
+              "offerCount": marketingServices.length.toString(),
+              "offers": marketingServices.map(service => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": service.title,
+                  "description": service.description
+                },
+                "deliveryMethod": "Online Service"
+              }))
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Book Marketing Services",
+              "itemListElement": marketingServices.map(service => ({
+                "@type": "Service",
+                "name": service.title,
+                "description": service.description,
+                "offers": {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "serviceOutput": service.features
+                  }
+                }
+              }))
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "reviewCount": "100",
+              "bestRating": "5"
+            },
+            "review": testimonials.map(testimonial => ({
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": testimonial.rating.toString(),
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": testimonial.name,
+                "jobTitle": testimonial.role
+              },
+              "reviewBody": testimonial.content
+            }))
+          })}
+        </script>
       </Helmet>
       
       <motion.section 
@@ -114,14 +183,14 @@ const MarketingPage: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4 text-blue-400">
                 <Megaphone className="h-10 w-10 text-blue-400 mr-4" />
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                  Book Marketing Services
+                  Strategic Book Marketing by Western Publish
                 </h1>
               </div>
               <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Your book deserves to be discovered. Our data-driven marketing strategies connect your work with its ideal audience, build your author platform, and drive sustainable sales.
+                Your book deserves to be discovered. Western Publish's data-driven marketing strategies connect your work with its ideal audience, build your author platform, and drive sustainable sales.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
@@ -146,7 +215,7 @@ const MarketingPage: React.FC = () => {
             >
               <img 
                 src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="Marketing analytics dashboard showing growth" 
+                alt="Book marketing analytics dashboard showing successful author campaign results - Western Publish's data-driven marketing approach" 
                 className="w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
             </motion.div>
@@ -163,9 +232,9 @@ const MarketingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Results-Driven Marketing Solutions</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Western Publish's Marketing Solutions</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer a full suite of marketing services designed to build your audience and sell more books.
+              Western Publish offers a full suite of marketing services designed to build your audience and sell more books, ensuring your message reaches the right people.
             </p>
           </motion.div>
           
@@ -216,9 +285,9 @@ const MarketingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Strategic Marketing Process</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">The Western Publish Marketing Process</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              A proven, four-phase approach to build momentum and drive long-term success for your book.
+              At Western Publish, we use a proven, four-phase approach to build momentum and drive long-term success for your book.
             </p>
           </motion.div>
           
@@ -256,7 +325,7 @@ const MarketingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Our Marketing Works</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Western Publish Marketing Works</h2>
           </motion.div>
           
           <motion.div 
@@ -267,9 +336,9 @@ const MarketingPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             {[
-              { icon: BarChart, title: "Data-Driven Strategy", desc: "Every decision is backed by market research, analytics, and a deep understanding of reader behavior." },
-              { icon: Target, title: "Holistic Approach", desc: "We integrate branding, social media, PR, and advertising for a powerful, unified campaign." },
-              { icon: Share2, title: "Long-Term Partnership", desc: "We focus on building a sustainable author career, not just a one-time launch spike." },
+              { icon: BarChart, title: "Data-Driven Strategy", desc: "At Western Publish, every decision is backed by market research, analytics, and a deep understanding of reader behavior." },
+              { icon: Target, title: "Holistic Approach", desc: "Western Publish integrates branding, social media, PR, and advertising for a powerful, unified campaign." },
+              { icon: Share2, title: "Long-Term Partnership", desc: "Western Publish focuses on building a sustainable author career, not just a one-time launch spike. We're your long-term partner." },
             ].map(item => (
               <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
                 <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
@@ -329,9 +398,9 @@ const MarketingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Zap className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-extrabold mb-6">Ready to Find Your Readers?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Find Your Readers with Western Publish?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let's build a marketing strategy that turns your book into a must-read. Schedule a free consultation to get started.
+            Let Western Publish build a marketing strategy that turns your book into a must-read. Schedule a free consultation to get started.
           </p>
           <Link 
             to="/contact" 

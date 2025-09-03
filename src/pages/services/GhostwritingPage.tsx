@@ -7,20 +7,20 @@ import { PenTool, BookOpen, Users, CheckCircle, Star, Award, Target, MessageCirc
 const GhostwritingPage: React.FC = () => {
   const services = [
     {
-      title: 'Business & Thought Leadership',
-      description: 'Establish your authority and share your expertise with a professionally written book that builds your brand.',
+      title: 'Business & Thought Leadership with Western Publish',
+      description: 'Western Publish helps you establish your authority and share your expertise with a professionally written book that builds your brand and solidifies your legacy.',
       features: ['In-depth industry research', 'Capture your unique voice', 'Structure complex ideas clearly', 'Position you as an expert'],
       icon: BrainCircuit,
     },
     {
-      title: 'Memoir & Autobiography',
-      description: 'Tell your life story in a compelling narrative that honors your experiences and preserves your legacy.',
+      title: 'Memoir & Autobiography by Western Publish',
+      description: 'With Western Publish, you can tell your life story in a compelling narrative that honors your experiences and preserves your legacy for generations to come.',
       features: ['Sensitive and in-depth interviews', 'Authentic voice capturing', 'Craft a captivating story arc', 'Preserve your personal legacy'],
       icon: Heart,
     },
     {
-      title: 'Fiction & Story Development',
-      description: 'Bring your imaginative worlds to life. We help you develop plots and characters that captivate readers.',
+      title: 'Fiction & Story Development at Western Publish',
+      description: 'Bring your imaginative worlds to life with Western Publish. We help you develop intricate plots and unforgettable characters that captivate readers from the first page to the last.',
       features: ['Collaborative plot development', 'Engaging character creation', 'Genre-specific storytelling', 'From concept to full manuscript'],
       icon: BookOpen,
     },
@@ -29,22 +29,22 @@ const GhostwritingPage: React.FC = () => {
   const process = [
     {
       step: 1,
-      title: 'Discovery & Strategy',
+      title: 'Discovery & Strategy with Western Publish',
       description: 'We begin with deep-dive interviews to understand your vision, voice, and goals for the book.',
     },
     {
       step: 2,
-      title: 'Outline & Structure',
+      title: 'Outline & Structure by Western Publish',
       description: 'Our team creates a comprehensive, chapter-by-chapter outline for your approval, ensuring the structure is solid before writing begins.',
     },
     {
       step: 3,
-      title: 'Collaborative Writing',
+      title: 'Collaborative Writing at Western Publish',
       description: 'Your ghostwriter crafts the manuscript, delivering chapters for your feedback and revisions in a collaborative process.',
     },
     {
       step: 4,
-      title: 'Editing & Polishing',
+      title: 'Editing & Polishing with Western Publish',
       description: 'Once the manuscript is complete, it undergoes professional editing and proofreading to ensure it meets the highest publishing standards.',
     },
   ];
@@ -53,19 +53,19 @@ const GhostwritingPage: React.FC = () => {
     {
       name: 'Sarah Johnson',
       role: 'CEO, Tech Innovations',
-      content: 'Western Publish didn\'t just write a book; they captured my voice and vision perfectly. The process was seamless, professional, and the final product has been a huge asset for my brand.',
+      content: "Western Publish didn't just write a book; they captured my voice and vision perfectly. Their process was seamless, professional, and the final product has been a huge asset for my brand.",
       rating: 5,
     },
     {
       name: 'Michael Chen',
       role: 'Retired Military Officer',
-      content: 'Telling my story was a deeply personal journey, and the ghostwriter handled it with incredible respect and skill. They brought my memoir to life in a way I never could have alone.',
+      content: 'Telling my story was a deeply personal journey, and the Western Publish ghostwriter handled it with incredible respect and skill. They brought my memoir to life in a way I never could have alone.',
       rating: 5,
     },
     {
       name: 'Dr. Emily Rodriguez',
       role: 'Healthcare Professional',
-      content: 'The team transformed my complex ideas into an accessible and engaging self-help book. Their expertise in structuring content for reader impact was invaluable.',
+      content: 'The Western Publish team transformed my complex ideas into an accessible and engaging self-help book. Their expertise in structuring content for reader impact was invaluable.',
       rating: 5,
     },
   ];
@@ -90,9 +90,93 @@ const GhostwritingPage: React.FC = () => {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
-        <title>Professional Ghostwriting Services - Western Publish</title>
-        <meta name="description" content="Turn your idea into a professionally written book. Our expert ghostwriting services cover business books, memoirs, fiction, and more, capturing your unique voice." />
-        <meta name="keywords" content="ghostwriting services, professional ghostwriter, hire a ghostwriter, book writing services, memoir writer, business book writer" />
+        <title>Professional Ghostwriting Services | Expert Book Writers - Western Publish</title>
+        <meta name="description" content="Turn your idea into a professionally written book with Western Publish's expert ghostwriting services. We specialize in business books, memoirs, fiction, and more, capturing your unique voice and vision perfectly." />
+        <meta name="keywords" content="ghostwriting services, professional ghostwriter, hire a ghostwriter, book writing services, memoir writer, business book writer, fiction ghostwriter, autobiography writer" />
+        <link rel="canonical" href="https://westernpublish.com/services/ghostwriting" />
+        <meta property="og:title" content="Professional Ghostwriting Services | Expert Book Writers - Western Publish" />
+        <meta property="og:description" content="Turn your idea into a professionally written book with Western Publish's expert ghostwriting services. We specialize in business books, memoirs, fiction, and more, capturing your unique voice and vision perfectly." />
+        <meta property="og:url" content="https://westernpublish.com/services/ghostwriting" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Ghostwriting Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "url": "https://westernpublish.com"
+            },
+            "description": "Professional ghostwriting services for books, including business books, memoirs, fiction, and autobiographies.",
+            "areaServed": "Worldwide",
+            "offers": {
+              "@type": "AggregateOffer",
+              "offerCount": "3",
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Business & Thought Leadership Ghostwriting",
+                    "description": "Establish your authority and share your expertise with a professionally written book that builds your brand."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Memoir & Autobiography Ghostwriting",
+                    "description": "Tell your life story in a compelling narrative that honors your experiences and preserves your legacy."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Fiction & Story Development",
+                    "description": "Bring your imaginative worlds to life with expert plot and character development."
+                  }
+                }
+              ]
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Ghostwriting Services",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Business Books",
+                  "itemListElement": ["Industry Research", "Brand Development", "Expert Positioning"]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Memoirs",
+                  "itemListElement": ["Personal Interviews", "Legacy Preservation", "Story Development"]
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Fiction",
+                  "itemListElement": ["Plot Development", "Character Creation", "World Building"]
+                }
+              ]
+            },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Sarah Johnson",
+                "jobTitle": "CEO, Tech Innovations"
+              },
+              "reviewBody": "Western Publish didn't just write a book; they captured my voice and vision perfectly. The process was seamless, professional, and the final product has been a huge asset for my brand."
+            }
+          })}
+        </script>
       </Helmet>
       
       <motion.section 
@@ -108,14 +192,14 @@ const GhostwritingPage: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4 text-blue-400">
                 <PenTool className="h-10 w-10 text-blue-400 mr-4" />
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                  Ghostwriting Services
+                  Western Publish's Ghostwriting Services
                 </h1>
               </div>
               <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Have a story to tell or expertise to share? Our professional ghostwriters transform your ideas into a powerful, polished book that reflects your voice and vision.
+                At Western Publish, we believe every great idea deserves a powerful voice. Our professional ghostwriters are masters of their craft, dedicated to transforming your concepts into a powerful, polished book that reflects your unique perspective and vision.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
@@ -157,9 +241,9 @@ const GhostwritingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Your Story, Professionally Written</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">How Western Publish Writes Your Story</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              We specialize in a range of genres, ensuring your project is handled by a writer with relevant expertise and a passion for your subject.
+              Western Publish specializes in a range of genres, ensuring your project is handled by a writer with deep, relevant expertise and a genuine passion for your subject matter.
             </p>
           </motion.div>
           
@@ -210,9 +294,9 @@ const GhostwritingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Proven Ghostwriting Process</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">The Western Publish Ghostwriting Process</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              A transparent, four-step collaborative process that guarantees your vision is realized to the highest standard.
+              At Western Publish, we follow a transparent, four-step collaborative process that guarantees your vision is realized to the highest standard.
             </p>
           </motion.div>
           
@@ -250,7 +334,7 @@ const GhostwritingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Partner With Our Writers?</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Partner With Western Publish?</h2>
           </motion.div>
           
           <motion.div 
@@ -261,9 +345,9 @@ const GhostwritingPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             {[
-              { icon: Users, title: "Vetted Professionals", desc: "Our writers are seasoned professionals with years of experience and published works." },
-              { icon: MessageCircle, title: "Collaborative Spirit", desc: "We work with you, not just for you. Your feedback is crucial at every stage." },
-              { icon: Target, title: "Your Voice, Perfected", desc: "Our talent lies in capturing your unique voice and making it shine on the page." },
+              { icon: Users, title: "Vetted Professionals", desc: "At Western Publish, our writers are not just skilled; they are seasoned professionals with years of experience and a portfolio of published works." },
+              { icon: MessageCircle, title: "Collaborative Spirit", desc: "Western Publish fosters a collaborative spirit. We work with you, not just for you, ensuring your feedback is integral at every stage." },
+              { icon: Target, title: "Your Voice, Perfected", desc: "The core of our talent at Western Publish lies in capturing your unique voice and making it shine on the page, creating a truly authentic work." },
             ].map(item => (
               <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
                 <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
@@ -323,9 +407,9 @@ const GhostwritingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Award className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-extrabold mb-6">Ready to Tell Your Story?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Tell Your Story with Western Publish?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Your book is waiting to be written. Let's start the conversation and turn your idea into a reality.
+            Your book is waiting to be written. Let Western Publish start the conversation and turn your idea into a published reality.
           </p>
           <Link 
             to="/contact" 

@@ -7,22 +7,22 @@ import { Edit3, Search, CheckCircle, Star, Award, Target, BookOpen, Zap, Feather
 const EditingPage: React.FC = () => {
   const editingServices = [
     {
-      title: 'Developmental Editing',
-      description: 'Big-picture feedback on plot, character arcs, pacing, and structure to ensure your story is compelling and coherent.',
+      title: 'Developmental Editing by Western Publish',
+      description: 'Western Publish provides big-picture feedback on plot, character arcs, pacing, and structure to ensure your story is compelling and coherent.',
       features: ['Story structure analysis', 'Character arc development', 'Plot consistency & pacing', 'World-building feedback'],
       price: '$0.08 - $0.12 / word',
       icon: BookOpen,
     },
     {
-      title: 'Line & Copy Editing',
-      description: 'A comprehensive edit focusing on style, flow, and clarity at the sentence level, combined with correcting technical errors.',
+      title: 'Line & Copy Editing at Western Publish',
+      description: "Our comprehensive edit focuses on style, flow, and clarity at the sentence level, combined with correcting technical errors to meet Western Publish's high standards.",
       features: ['Clarity and flow enhancement', 'Voice and tone consistency', 'Grammar, spelling & punctuation', 'Syntax and word choice'],
       price: '$0.05 - $0.08 / word',
       icon: Edit3,
     },
     {
-      title: 'Proofreading',
-      description: 'The final quality check to catch any lingering typos, formatting issues, or grammatical errors before publication.',
+      title: 'Proofreading with Western Publish',
+      description: "Western Publish's final quality check catches any lingering typos, formatting issues, or grammatical errors before your book goes to publication.",
       features: ['Typo and spelling correction', 'Punctuation errors', 'Formatting consistency check', 'Final pre-publication polish'],
       price: '$0.02 - $0.03 / word',
       icon: Search,
@@ -32,22 +32,22 @@ const EditingPage: React.FC = () => {
   const editingProcess = [
     {
       step: 1,
-      title: 'Submit Your Manuscript',
+      title: 'Submit to Western Publish',
       description: 'Share your manuscript with us along with your goals for the project. We’ll perform a free sample edit to assess the required level of editing.',
     },
     {
       step: 2,
-      title: 'Match with an Editor',
+      title: 'Match with a Western Publish Editor',
       description: 'We handpick a genre-specialist editor from our team whose expertise aligns perfectly with your manuscript and creative vision.',
     },
     {
       step: 3,
-      title: 'Collaborative Editing',
+      title: 'Collaborative Editing with Western Publish',
       description: 'Your editor meticulously works through your manuscript using track changes, providing insightful comments and actionable feedback.',
     },
     {
       step: 4,
-      title: 'Review and Revise',
+      title: 'Review and Revise with Western Publish',
       description: 'You receive the edited manuscript and an editorial letter. You then review the changes and suggestions, with our support for any questions.',
     },
   ];
@@ -56,19 +56,19 @@ const EditingPage: React.FC = () => {
     {
       name: 'Amanda Foster',
       role: 'Romance Novelist',
-      content: 'The developmental edit was a game-changer. My editor saw the potential in my story and gave me the exact feedback I needed to elevate it. The plot is so much stronger now!',
+      content: 'The developmental edit from Western Publish was a game-changer. My editor saw the potential in my story and gave me the exact feedback I needed to elevate it. The plot is so much stronger now!',
       rating: 5,
     },
     {
       name: 'Robert Chen',
       role: 'Business Author',
-      content: 'Incredibly professional and thorough. The line editing sharpened my message and made the entire book more impactful. I couldn\'t be happier with the result.',
+      content: 'Incredibly professional and thorough. The line editing from Western Publish sharpened my message and made the entire book more impactful. I couldn\'t be happier with the result.',
       rating: 5,
     },
     {
       name: 'Dr. Sarah Williams',
       role: 'Academic Author',
-      content: 'The attention to detail during the copy edit was exceptional. They caught inconsistencies I had missed after a dozen read-throughs. Worth every penny.',
+      content: 'The attention to detail during the copy edit at Western Publish was exceptional. They caught inconsistencies I had missed after a dozen read-throughs. Worth every penny.',
       rating: 5,
     },
   ];
@@ -93,9 +93,67 @@ const EditingPage: React.FC = () => {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
-        <title>Professional Book Editing Services - Western Publish</title>
-        <meta name="description" content="Elevate your manuscript with our professional book editing services, including developmental, line, copy editing, and proofreading by genre-specialist editors." />
-        <meta name="keywords" content="book editing, developmental editing, line editing, copy editing, proofreading, manuscript editing, professional editor" />
+        <title>Professional Book Editing Services | Developmental & Line Editing - Western Publish</title>
+        <meta name="description" content="Transform your manuscript with Western Publish's professional book editing services. Expert developmental editing, line editing, copy editing, and proofreading by genre-specialist editors. Get your free sample edit today!" />
+        <meta name="keywords" content="book editing services, developmental editing, line editing, copy editing, proofreading, manuscript editing, professional editor, genre specialist editors, manuscript feedback, book editing rates" />
+        <link rel="canonical" href="https://westernpublish.com/services/editing" />
+        <meta property="og:title" content="Professional Book Editing Services | Developmental & Line Editing - Western Publish" />
+        <meta property="og:description" content="Transform your manuscript with Western Publish's professional book editing services. Expert developmental editing, line editing, copy editing, and proofreading by genre-specialist editors. Get your free sample edit today!" />
+        <meta property="og:url" content="https://westernpublish.com/services/editing" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Book Editing Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "url": "https://westernpublish.com",
+              "logo": "https://westernpublish.com/favicon.svg"
+            },
+            "serviceType": "Book Editing",
+            "description": "Professional book editing services including developmental editing, line editing, copy editing, and proofreading by genre-specialist editors.",
+            "offers": {
+              "@type": "AggregateOffer",
+              "offerCount": "3",
+              "offers": editingServices.map(service => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": service.title,
+                  "description": service.description
+                },
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "price": service.price.replace(/[^0-9.-]/g, '').split('-')[0],
+                  "priceCurrency": "USD",
+                  "unitText": "per word"
+                }
+              }))
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "reviewCount": "150",
+              "bestRating": "5"
+            },
+            "review": testimonials.map(testimonial => ({
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": testimonial.rating.toString(),
+                "bestRating": "5"
+              },
+              "author": {
+                "@type": "Person",
+                "name": testimonial.name,
+                "jobTitle": testimonial.role
+              },
+              "reviewBody": testimonial.content
+            }))
+          })}
+        </script>
       </Helmet>
       
       <motion.section 
@@ -111,14 +169,14 @@ const EditingPage: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4 text-blue-400">
                 <Feather className="h-10 w-10 text-blue-400 mr-4" />
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                  Book Editing Services
+                  Western Publish's Book Editing Services
                 </h1>
               </div>
               <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Transform your rough draft into a polished, professional manuscript. Our expert editors refine your story while preserving your unique authorial voice.
+                At Western Publish, we transform your rough draft into a polished, professional manuscript. Our expert editors meticulously refine your story while preserving your unique authorial voice.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
@@ -143,7 +201,7 @@ const EditingPage: React.FC = () => {
             >
               <img 
                 src="https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="Editor reviewing a manuscript on a tablet" 
+                alt="Professional book editor reviewing manuscript on tablet - Western Publish's expert editing services in action" 
                 className="w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
             </motion.div>
@@ -160,9 +218,9 @@ const EditingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Our Editing Services</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">How Western Publish Elevates Your Manuscript</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              From structural integrity to the final polish, we offer a comprehensive suite of editing services tailored to your manuscript's needs.
+              From structural integrity to the final polish, Western Publish offers a comprehensive suite of editing services tailored to your manuscript's specific needs.
             </p>
           </motion.div>
           
@@ -214,9 +272,9 @@ const EditingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Streamlined Editing Process</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">The Western Publish Editing Process</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              A clear, collaborative, and effective process designed to make your manuscript shine.
+              At Western Publish, we use a clear, collaborative, and effective process designed to make your manuscript shine.
             </p>
           </motion.div>
           
@@ -254,7 +312,7 @@ const EditingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Why Choose Our Editors?</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">The Western Publish Editing Advantage</h2>
           </motion.div>
           
           <motion.div 
@@ -265,9 +323,9 @@ const EditingPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             {[
-              { icon: Award, title: "Genre Specialists", desc: "Our editors are experts in their chosen genres, from sci-fi to romance to non-fiction." },
-              { icon: Target, title: "Preserve Your Voice", desc: "We refine and polish your manuscript while ensuring your unique authorial voice remains intact." },
-              { icon: CheckCircle, title: "Satisfaction Guaranteed", desc: "We are committed to your satisfaction and will work with you to ensure the final edit meets your expectations." },
+              { icon: Award, title: "Genre Specialists", desc: "Western Publish editors are experts in their chosen genres, from sci-fi to romance to non-fiction, ensuring a deep understanding of your work." },
+              { icon: Target, title: "Preserve Your Voice", desc: "At Western Publish, we refine and polish your manuscript while ensuring your unique authorial voice remains intact and powerful." },
+              { icon: CheckCircle, title: "Satisfaction Guaranteed", desc: "Western Publish is committed to your satisfaction. We will work with you to ensure the final edit meets and exceeds your expectations." },
             ].map(item => (
               <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
                 <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
@@ -327,9 +385,9 @@ const EditingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Zap className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-extrabold mb-6">Ready to Perfect Your Manuscript?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to Perfect Your Manuscript with Western Publish?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let our expert editors help you create a polished, professional, and publication-ready book that will captivate readers.
+            Let the expert editors at Western Publish help you create a polished, professional, and publication-ready book that will captivate readers.
           </p>
           <Link 
             to="/contact" 

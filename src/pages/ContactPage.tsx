@@ -79,13 +79,37 @@ const ContactPage: React.FC = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>How to Contact Western Publish? | Get in Touch</title>
-        <meta name="description" content="Have a question about your book project? Contact Western Publish, a dba of Western Publishing LLC. We offer professional ghostwriting, publishing, and marketing services. Reach out for a free consultation." />
-        <meta name="keywords" content="contact western publish, book publishing consultation, ghostwriting services, publishing quote, western publishing llc" />
+        <title>Contact Western Publish | Book Publishing & Marketing Services</title>
+        <meta name="description" content="Contact Western Publish for professional book publishing services. Get a free consultation for ghostwriting, editing, publishing, or marketing your book. Our expert team has published 500+ books with 98% client satisfaction. Reach us at +1 (505) 396-2071." />
+        <meta name="keywords" content="contact western publish, book publishing consultation, free publishing quote, ghostwriting services, book editing services, book marketing consultation, author services contact, western publishing llc contact, publishing expert consultation" />
         <link rel="canonical" href="https://westernpublish.com/contact" />
-        <meta property="og:title" content="How to Contact Western Publish? | Get in Touch" />
-        <meta property="og:description" content="Have a question about your book project? Contact Western Publish for professional ghostwriting, publishing, and marketing services. Reach out for a free consultation." />
+        <meta property="og:title" content="Contact Western Publish | Book Publishing & Marketing Services" />
+        <meta property="og:description" content="Contact Western Publish for professional book publishing services. Get a free consultation for ghostwriting, editing, publishing, or marketing your book. Expert team with 500+ published books." />
         <meta property="og:url" content="https://westernpublish.com/contact" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Western Publish",
+            "description": "Contact page for Western Publish's book publishing and marketing services",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "telephone": "+1-505-396-2071",
+              "email": "publish@westernpublish.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PL NE STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "openingHours": ["Mo-Fr 09:00-18:00"],
+              "areaServed": "Worldwide"
+            }
+          })}
+        </script>
       </Helmet>
       
       {/* Hero Section */}

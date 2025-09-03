@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://westernpublish.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://westernpublish.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://westernpublish.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Services (add more if routes change) -->
+  <url>
+    <loc>https://westernpublish.com/services/Editing</loc>
+  </url>
+  <url>
+    <loc>https://westernpublish.com/services/Fiction Writing</loc>
+  </url>
+  <url>
+    <loc>https://westernpublish.com/services/Marketing</loc>
+  </url>
+  <url>
+    <loc>https://westernpublish.com/services/Publishing</loc>
+  </url>
+  <!-- Add other service URLs similarly or generate dynamically during build/deploy -->
+</urlset>

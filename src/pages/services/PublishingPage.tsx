@@ -8,8 +8,8 @@ const PublishingPage: React.FC = () => {
   const packages = [
     {
       name: 'Essential Publishing',
-      price: '$2,999',
-      description: 'For authors who need professional publishing essentials to get their book to market.',
+      price: 'Contact Us',
+      description: 'The perfect starting point. Western Publish provides the professional essentials to get your book to market.',
       features: [
         'Professional Interior Formatting',
         'Standard Cover Design (2 Concepts)',
@@ -22,8 +22,8 @@ const PublishingPage: React.FC = () => {
     },
     {
       name: 'Professional Publishing',
-      price: '$4,999',
-      description: 'Our most popular package, offering comprehensive services for a polished, wide-reaching launch.',
+      price: 'Contact Us',
+      description: 'Our most popular package. Western Publish offers comprehensive services for a polished, wide-reaching launch.',
       features: [
         'Everything in Essential, plus:',
         'Premium Cover Design (3 Concepts)',
@@ -37,8 +37,8 @@ const PublishingPage: React.FC = () => {
     },
     {
       name: 'Bestseller Publishing',
-      price: '$7,999',
-      description: 'The ultimate all-in-one solution for authors aiming for maximum impact and bestseller status.',
+      price: 'Contact Us',
+      description: 'The ultimate solution from Western Publish for authors aiming for maximum impact and bestseller status.',
       features: [
         'Everything in Professional, plus:',
         'Custom Cover Design (Unlimited Revisions)',
@@ -55,25 +55,25 @@ const PublishingPage: React.FC = () => {
   const publishingProcess = [
     {
       step: 1,
-      title: 'Manuscript Finalization',
+      title: 'Manuscript Finalization with Western Publish',
       description: 'We ensure your manuscript is professionally edited and proofread, ready for the design phase.',
       icon: FileSignature,
     },
     {
       step: 2,
-      title: 'Design & Formatting',
+      title: 'Design & Formatting by Western Publish',
       description: 'Our designers create a stunning cover and a clean, professional interior layout for both print and ebook.',
       icon: Palette,
     },
     {
       step: 3,
-      title: 'Setup & Registration',
+      title: 'Setup & Registration at Western Publish',
       description: 'We handle all the technical details: ISBN assignment, copyright registration, and setting up your publisher accounts.',
       icon: Package,
     },
     {
       step: 4,
-      title: 'Global Distribution',
+      title: 'Global Distribution by Western Publish',
       description: 'We upload your book to our global network, making it available for sale on Amazon, B&N, and thousands of other retailers.',
       icon: Globe,
     },
@@ -99,9 +99,91 @@ const PublishingPage: React.FC = () => {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
-        <title>Book Publishing Services | From Manuscript to Market - Western Publish</title>
-        <meta name="description" content="Professional book publishing services with global distribution. We handle cover design, formatting, ISBN, and distribution to Amazon, B&N, and more." />
-        <meta name="keywords" content="book publishing services, self-publishing company, book distribution, professional book formatting, cover design, publish on Amazon" />
+        <title>Book Publishing Services | Global Distribution & Professional Design - Western Publish</title>
+        <meta name="description" content="Get your book published professionally with Western Publish. We handle everything: cover design, formatting, ISBN registration, and global distribution to Amazon, Barnes & Noble, and more. Start your publishing journey today!" />
+        <meta name="keywords" content="book publishing services, self-publishing company, book distribution, professional book formatting, cover design, publish on Amazon, global book distribution, ISBN registration, book printing services" />
+        <link rel="canonical" href="https://westernpublish.com/services/publishing" />
+        <meta property="og:title" content="Book Publishing Services | Global Distribution & Professional Design - Western Publish" />
+        <meta property="og:description" content="Get your book published professionally with Western Publish. We handle everything: cover design, formatting, ISBN registration, and global distribution to Amazon, Barnes & Noble, and more. Start your publishing journey today!" />
+        <meta property="og:url" content="https://westernpublish.com/services/publishing" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Book Publishing Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "url": "https://westernpublish.com",
+              "logo": "https://westernpublish.com/favicon.svg"
+            },
+            "serviceType": "Book Publishing",
+            "description": "Professional book publishing services with global distribution, cover design, formatting, ISBN registration, and more.",
+            "offers": {
+              "@type": "AggregateOffer",
+              "offerCount": packages.length.toString(),
+              "offers": packages.map(pkg => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": pkg.name,
+                  "description": pkg.description
+                },
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "price": pkg.price.replace(/[^0-9]/g, ''),
+                  "priceCurrency": "USD"
+                },
+                "deliveryMethod": "Online Service",
+                "eligibleCustomerType": "Author"
+              }))
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Book Publishing Packages",
+              "itemListElement": packages.map(pkg => ({
+                "@type": "Service",
+                "name": pkg.name,
+                "description": pkg.description,
+                "offers": {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "serviceOutput": pkg.features
+                  },
+                  "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "price": pkg.price.replace(/[^0-9]/g, ''),
+                    "priceCurrency": "USD"
+                  }
+                }
+              }))
+            },
+            "serviceOutput": {
+              "@type": "Book",
+              "bookFormat": ["Hardcover", "Paperback", "EBook"]
+            },
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://westernpublish.com/services/publishing",
+              "serviceLocation": {
+                "@type": "Place",
+                "name": "Online"
+              },
+              "availableLanguage": "English"
+            },
+            "areaServed": {
+              "@type": "GeoCircle",
+              "name": "Global",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "0",
+                "longitude": "0"
+              }
+            }
+          })}
+        </script>
       </Helmet>
       
       <motion.section 
@@ -117,14 +199,14 @@ const PublishingPage: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4 text-blue-400">
                 <BookOpen className="h-10 w-10 text-blue-400 mr-4" />
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                  Book Publishing Services
+                  Your Publishing Partner: Western Publish
                 </h1>
               </div>
               <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Transform your finished manuscript into a professionally published book available to readers worldwide. We manage the entire process, so you can focus on writing.
+                Transform your finished manuscript into a professionally published book available to readers worldwide. Western Publish manages the entire process, so you can focus on what you do best: writing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 
@@ -149,7 +231,7 @@ const PublishingPage: React.FC = () => {
             >
               <img 
                 src="https://images.pexels.com/photos/3847633/pexels-photo-3847633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                alt="Stack of professionally published books" 
+                alt="Professional book publishing showcase - Premium hardcover and paperback books published by Western Publish's expert team" 
                 className="w-full h-auto object-cover rounded-2xl shadow-2xl"
               />
             </motion.div>
@@ -166,9 +248,9 @@ const PublishingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Publishing Packages for Every Author</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">Western Publish's Packages for Every Author</h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose the all-inclusive package that best fits your goals and budget.
+              Choose the all-inclusive Western Publish package that best fits your goals and budget.
             </p>
           </motion.div>
           
@@ -232,9 +314,9 @@ const PublishingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">Our Publishing Process</h2>
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">The Western Publish Publishing Process</h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              A streamlined, transparent process that takes your manuscript from your desktop to the global marketplace.
+              Western Publish uses a streamlined, transparent process that takes your manuscript from your desktop to the global marketplace.
             </p>
           </motion.div>
           
@@ -283,9 +365,9 @@ const PublishingPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             {[
-              { icon: Globe, title: "Global Distribution", desc: "Reach readers in over 190 countries through Amazon, IngramSpark, and more." },
-              { icon: Award, title: "Professional Quality", desc: "Our team ensures your book meets the highest industry standards of design and production." },
-              { icon: Target, title: "Author-Centric Approach", desc: "You retain 100% of your rights and royalties. We're your partner, not your publisher." },
+              { icon: Globe, title: "Global Distribution", desc: "With Western Publish, you can reach readers in over 190 countries through Amazon, IngramSpark, and more." },
+              { icon: Award, title: "Professional Quality", desc: "The Western Publish team ensures your book meets the highest industry standards of design and production." },
+              { icon: Target, title: "Author-Centric Approach", desc: "At Western Publish, you retain 100% of your rights and royalties. We're your partner, not just your publisher." },
             ].map(item => (
               <motion.div key={item.title} variants={itemVariants} className="text-center p-6">
                 <div className="mx-auto bg-blue-100 rounded-full p-4 w-24 h-24 flex items-center justify-center mb-6">
@@ -308,9 +390,9 @@ const PublishingPage: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Printer className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-extrabold mb-6">Ready to See Your Book in Print?</h2>
+          <h2 className="text-4xl font-extrabold mb-6">Ready to See Your Book in Print with Western Publish?</h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let's bring your book to the world. Contact us for a free consultation to discuss your publishing goals.
+            Let Western Publish bring your book to the world. Contact us for a free consultation to discuss your publishing goals.
           </p>
           <Link 
             to="/contact" 

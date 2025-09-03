@@ -2,14 +2,16 @@ export interface ServiceContent {
   title: string;
   description: string;
   image: string;
+    imageAlt: string;
   sections: { title: string; description: string; points: string[] }[];
 }
 
 export const services: Record<string, ServiceContent> = {
     "Editing": {
         title: "Professional Book Editing Services",
-        description: "Refine your manuscript to perfection with our comprehensive editing services. From developmental editing to copy editing and proofreading, our team ensures your book is polished and ready for publication.",
+        description: "At Western Publish, our elite team of editors has helped create over 50 bestsellers through our signature three-stage editing process. We combine developmental mastery, meticulous line editing, and professional proofreading to transform your manuscript into a polished masterpiece that stands out in today's competitive market.",
         image: "https://images.pexels.com/photos/373076/pexels-photo-373076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Editor reviewing manuscript pages",
         sections: [
             {
                 title: "Developmental Editing",
@@ -32,6 +34,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Expert Fiction Ghostwriting",
         description: "Bring your story to life with our skilled fiction ghostwriters. We specialize in a wide range of genres, from thrilling mysteries to epic fantasies, ensuring your vision is captured on the page.",
         image: "https://images.pexels.com/photos/833052/pexels-photo-833052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Author writing fiction manuscript",
         sections: [
             {
                 title: "Genre Specialization",
@@ -54,6 +57,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Strategic Book Marketing",
         description: "Launch your book with a powerful marketing strategy. We create and execute targeted campaigns to build buzz, drive sales, and connect you with your ideal readers.",
         image: "https://images.pexels.com/photos/6476260/pexels-photo-6476260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Marketing team planning a book campaign",
         sections: [
             {
                 title: "Custom Marketing Plan",
@@ -76,6 +80,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Compelling Non-Fiction Ghostwriting",
         description: "Share your expertise and stories with the world. Our non-fiction ghostwriters help you craft engaging, well-researched books that establish you as a thought leader in your field.",
         image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Researcher and writer working on non-fiction manuscript",
         sections: [
             {
                 title: "Subject Matter Expertise",
@@ -98,6 +103,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Comprehensive Publishing Solutions",
         description: "Navigate the path to publication with ease. We offer end-to-end publishing services, from formatting and cover design to distribution and royalty management.",
         image: "https://images.pexels.com/photos/415071/pexels-photo-415071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Stack of professionally published books",
         sections: [
             {
                 title: "Professional Formatting",
@@ -120,6 +126,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Enchanting Story Book Writing",
         description: "Create magical worlds and unforgettable characters with our story book writing services. We help you craft tales that will captivate young readers and their parents.",
         image: "https://images.pexels.com/photos/3845733/pexels-photo-3845733.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Children reading an illustrated storybook",
         sections: [
             {
                 title: "Age-Appropriate Content",
@@ -142,6 +149,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Professional Audiobook Production",
         description: "Reach a wider audience with a professionally produced audiobook. Our team handles everything from narration to mastering, delivering a high-quality audio experience for your listeners.",
         image: "https://images.pexels.com/photos/696407/pexels-photo-696407.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Narrator recording in a professional studio",
         sections: [
             {
                 title: "Talented Voice Actors",
@@ -164,6 +172,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Legacy-Defining Biography Writing",
         description: "Immortalize your life story or the story of a loved one with a beautifully written biography. Our writers work with you to capture the essence of a life, creating a lasting legacy.",
         image: "https://images.pexels.com/photos/3760809/pexels-photo-3760809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Writer interviewing a subject for a biography",
         sections: [
             {
                 title: "Sensitive Interviewing",
@@ -186,6 +195,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Cinematic Book Trailers",
         description: "Generate excitement for your book with a stunning cinematic trailer. Our video production team creates high-impact trailers that capture your book's essence and drive pre-orders and sales.",
         image: "https://images.pexels.com/photos/7234330/pexels-photo-7234330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Film crew producing a cinematic book trailer",
         sections: [
             {
                 title: "Professional Video Production",
@@ -208,6 +218,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Captivating Children's Book Writing",
         description: "Spark the imagination of young readers with a beautifully written children's book. We specialize in creating stories that are not only entertaining but also educational and inspiring.",
         image: "https://images.pexels.com/photos/1648377/pexels-photo-1648377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Author and illustrator working on a children's book",
         sections: [
             {
                 title: "Engaging for All Ages",
@@ -230,6 +241,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Stunning Book Design Services",
         description: "From cover to cover, we provide exceptional design services that make your book stand out. Our designers create beautiful, professional layouts for both print and digital formats.",
         image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Designer working on a book cover layout",
         sections: [
             {
                 title: "Eye-Catching Cover Design",
@@ -252,6 +264,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Targeted Google Ads for Authors",
         description: "Reach readers actively searching for books like yours with targeted Google Ads campaigns. We help you get your book in front of a high-intent audience to drive sales and increase visibility.",
         image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Analyst reviewing Google Ads campaign performance",
         sections: [
             {
                 title: "Keyword Research",
@@ -274,6 +287,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Engaging Facebook & Instagram Ads",
         description: "Connect with millions of potential readers on the world's largest social media platforms. We design and manage ad campaigns that build your author brand and drive book sales.",
         image: "https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Social media ads displayed on mobile devices",
         sections: [
             {
                 title: "Audience Targeting",
@@ -296,6 +310,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Viral TikTok Ad Campaigns",
         description: "Tap into the power of #BookTok with a targeted TikTok ad campaign. We help you create authentic, engaging content that resonates with the TikTok community and drives viral book sales.",
         image: "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Short-form video content being filmed for TikTok",
         sections: [
             {
                 title: "Trend-Based Content",
@@ -318,6 +333,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Dominant Amazon Ad Campaigns",
         description: "Boost your book's visibility and sales on the world's largest bookstore. Our Amazon Ads experts create and manage campaigns that put your book directly in front of eager buyers.",
         image: "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Amazon ad dashboard showing campaign metrics",
         sections: [
             {
                 title: "Sponsored Products & Brands",
@@ -340,6 +356,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Professional LinkedIn Ad Campaigns",
         description: "Promote your non-fiction book, business book, or memoir to a professional audience on LinkedIn. We help you connect with industry leaders and decision-makers.",
         image: "https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "LinkedIn ad creative shown on a desktop screen",
         sections: [
             {
                 title: "Target by Industry & Job Title",
@@ -362,6 +379,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Strategic Content Marketing for Authors",
         description: "Build your author platform and attract readers with valuable, engaging content. We develop and execute a content marketing strategy that establishes your expertise and grows your audience.",
         image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Content team planning blog and newsletter content",
         sections: [
             {
                 title: "Blog & Article Writing",
@@ -384,6 +402,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Dynamic Social Media Management",
         description: "Build a vibrant and engaged community around your books with our social media management services. We create and share content that reflects your author brand and connects with your readers.",
     image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Scheduler and content calendar for social media posts",
         sections: [
             {
                 title: "Platform-Specific Strategy",
@@ -406,6 +425,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Effective Email Marketing for Authors",
         description: "Build a direct line to your readers with a powerful email marketing strategy. We help you grow your email list and send newsletters that your subscribers will love to open.",
         image: "https://images.pexels.com/photos/1181352/pexels-photo-1181352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Email marketing dashboard showing open rates",
         sections: [
             {
                 title: "Email List Growth",
@@ -428,6 +448,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Podcast & YouTube Tour Booking",
         description: "Get your message in front of thousands of potential readers by appearing on popular podcasts and YouTube channels. We research and pitch relevant shows to secure guest appearances for you.",
         image: "https://images.pexels.com/photos/4126743/pexels-photo-4126743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Podcaster speaking into a microphone",
         sections: [
             {
                 title: "Targeted Outreach",
@@ -450,6 +471,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Goodreads & Book Review Strategy",
         description: "Maximize your book's visibility and credibility with a strategic approach to Goodreads and other review platforms. We help you build a strong presence and encourage reader reviews.",
         image: "https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Reader leaving a book review online",
         sections: [
             {
                 title: "Goodreads Author Program Setup",
@@ -472,6 +494,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Professional Press Release Services",
         description: "Announce your book launch or other author news to the media with a professionally written and distributed press release. We help you get the word out to journalists, bloggers, and media outlets.",
         image: "https://images.pexels.com/photos/56759/pexels-photo-56759.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Press release being distributed to media contacts",
         sections: [
             {
                 title: "Compelling Press Release Writing",
@@ -494,6 +517,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Unforgettable Virtual Book Launch Events",
         description: "Celebrate your book launch with a professionally produced virtual event. We handle all the technical details and promotion to ensure a successful and engaging launch party.",
         image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Virtual book launch event with livestream",
         sections: [
             {
                 title: "Event Planning & Production",
@@ -516,6 +540,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Strategic Author & Brand Collaborations",
         description: "Amplify your reach and connect with new audiences through strategic collaborations. We help you identify and partner with other authors, brands, and influencers for cross-promotional opportunities.",
         image: "https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Authors collaborating on a cross-promotion campaign",
         sections: [
             {
                 title: "Partnership Identification",
@@ -538,6 +563,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Book Club Outreach & Engagement",
         description: "Get your book into the hands of passionate readers by connecting with book clubs. We help you find and pitch book clubs, and can even help you prepare for author Q&A sessions.",
         image: "https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Book club members discussing a book",
         sections: [
             {
                 title: "Book Club Database",
@@ -560,6 +586,7 @@ export const services: Record<string, ServiceContent> = {
         title: "Targeted Email & Cold Outreach Campaigns",
         description: "Reach potential reviewers, media contacts, and promotional partners with a targeted email outreach campaign. We craft personalized emails that get responses.",
         image: "https://images.pexels.com/photos/3727463/pexels-photo-3727463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        imageAlt: "Person composing outreach emails on a laptop",
         sections: [
             {
                 title: "List Building",

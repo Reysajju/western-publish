@@ -29,8 +29,48 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
   return (
     <div>
       <Helmet>
-        <title>{service?.title || serviceName} - Western Publish</title>
-        <meta name="description" content={service?.description || ''} />
+        <title>{service?.title || serviceName} | Professional Book Services - Western Publish</title>
+        <meta name="description" content={`${service?.description || ''} Expert ${serviceName} services by Western Publish, your trusted partner in professional book publishing.`} />
+        <meta name="keywords" content={`${serviceName}, western publish, book services, ${service?.title || ''}, professional publishing services, book ${serviceName.toLowerCase()}`} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`https://westernpublish.com/services/${serviceName.toLowerCase()}`} />
+        <meta property="og:title" content={`${service?.title || serviceName} | Professional Book Services - Western Publish`} />
+        <meta property="og:description" content={`${service?.description || ''} Expert ${serviceName} services by Western Publish, your trusted partner in professional book publishing.`} />
+        <meta property="og:url" content={`https://westernpublish.com/services/${serviceName.toLowerCase()}`} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": service?.title,
+            "description": service?.description,
+            "provider": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "url": "https://westernpublish.com",
+              "logo": "https://westernpublish.com/favicon.svg"
+            },
+            "serviceType": serviceName,
+            "areaServed": "Worldwide",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": `${serviceName} Services`,
+              "itemListElement": service?.sections?.map(section => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": section.title,
+                  "description": section.description
+                }
+              }))
+            },
+            "image": service?.image,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://westernpublish.com/services/${serviceName.toLowerCase()}`
+            }
+          })}
+        </script>
       </Helmet>
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
@@ -78,7 +118,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
                 >
                   <img 
                     src={service.image}
-                    alt={service.title} 
+                    alt={service.imageAlt || service.title} 
                     className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
                   />
                 </motion.div>

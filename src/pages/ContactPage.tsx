@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Clock, Send, MessageCircle, BookOpen, Users, HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { services as allServices } from './services/serviceData';
 
 const ContactPage: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setSubmitStatus('success');
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const contactInfo = [
     {
       icon: Phone,
@@ -27,16 +53,7 @@ const ContactPage: React.FC = () => {
     },
   ];
 
-  const services = [
-    'Ghostwriting',
-    'Book Publishing',
-    'Marketing & Promotion',
-    'Editing & Proofreading',
-    'Cover Design',
-    'Author Branding',
-    'Consultation',
-    'Other',
-  ];
+  const services = Object.keys(allServices);
 
   const faqs = [
     {
@@ -112,9 +129,9 @@ const ContactPage: React.FC = () => {
               <form 
                 name="contact"
                 method="POST"
-                action="/?success=true"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
+                onSubmit={handleFormSubmit}
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
@@ -214,11 +231,33 @@ const ContactPage: React.FC = () => {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-3 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                 >
-                  <Send className="h-5 w-5" />
-                  <span>Send My Project Details</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      <span>Send My Project Details</span>
+                    </>
+                  )}
                 </button>
+                {submitStatus === 'success' && (
+                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Success!</strong>
+                    <span className="block sm:inline"> Your message has been sent. We'll get back to you soon.</span>
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Error!</strong>
+                    <span className="block sm:inline"> Something went wrong. Please try again later.</span>
+                  </div>
+                )}
               </form>
             </motion.div>
 

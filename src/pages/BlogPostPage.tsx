@@ -56,17 +56,43 @@ const BlogPostPage: React.FC = () => {
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(', ')} />
         <meta name="author" content={post.author} />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="publisher" content="Western Publish" />
+        <meta name="copyright" content="Western Publish" />
+        <meta name="language" content="English" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="revisit-after" content="30 days" />
+        <meta name="subject" content={`${post.category} - ${post.title}`} />
+        <meta name="abstract" content={post.excerpt} />
+        <meta name="topic" content={post.category} />
+        <meta name="summary" content={post.excerpt} />
+        <meta name="classification" content={`Publishing Blog > ${post.category}`} />
+        <meta name="category" content={`Publishing > Blog > ${post.category}`} />
+        <meta name="coverage" content="worldwide" />
+        <meta name="target" content="authors, writers, publishers" />
+        <meta name="audience" content="authors, aspiring writers, publishing professionals" />
+        <meta name="date" content={post.publishedDate} />
         <link rel="canonical" href={`https://westernpublish.com/blog/${post.id}`} />
         
         {/* Open Graph */}
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.image} />
+        <meta property="og:image:width" content="1260" />
+        <meta property="og:image:height" content="750" />
+        <meta property="og:image:alt" content={post.imageAlt} />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content="article" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Western Publish" />
         <meta property="article:author" content={post.author} />
         <meta property="article:published_time" content={post.publishedDate} />
+        <meta property="article:modified_time" content={post.publishedDate} />
         <meta property="article:section" content={post.category} />
+        <meta property="article:publisher" content="https://westernpublish.com" />
         {post.tags.map(tag => (
           <meta key={tag} property="article:tag" content={tag} />
         ))}
@@ -76,6 +102,10 @@ const BlogPostPage: React.FC = () => {
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt} />
         <meta name="twitter:image" content={post.image} />
+        <meta name="twitter:image:alt" content={post.imageAlt} />
+        <meta name="twitter:site" content="@westernpublish" />
+        <meta name="twitter:creator" content="@westernpublish" />
+        <meta name="twitter:domain" content="westernpublish.com" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -84,30 +114,78 @@ const BlogPostPage: React.FC = () => {
             "@type": "BlogPosting",
             "headline": post.title,
             "description": post.excerpt,
-            "image": post.image,
+            "articleBody": post.content.replace(/<[^>]*>/g, ''),
+            "wordCount": post.content.replace(/<[^>]*>/g, '').split(' ').length,
+            "timeRequired": post.readTime,
+            "inLanguage": "en-US",
+            "isAccessibleForFree": true,
+            "genre": post.category,
+            "image": {
+              "@type": "ImageObject",
+              "url": post.image,
+              "width": 1260,
+              "height": 750,
+              "caption": post.imageAlt
+            },
             "author": {
               "@type": "Person",
               "name": post.author,
-              "jobTitle": post.authorRole
+              "jobTitle": post.authorRole,
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Western Publish"
+              },
+              "image": post.authorImage
             },
             "publisher": {
               "@type": "Organization",
               "name": "Western Publish",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://westernpublish.com/favicon.svg"
+                "url": "https://westernpublish.com/favicon.svg",
+                "width": 60,
+                "height": 60
               }
             },
             "datePublished": post.publishedDate,
             "dateModified": post.publishedDate,
+            "keywords": post.tags.join(", "),
+            "articleSection": post.category,
+            "about": {
+              "@type": "Thing",
+              "name": post.category,
+              "description": `${post.category} insights and advice for authors`
+            },
             "mainEntityOfPage": {
               "@type": "WebPage",
               "@id": shareUrl
-            },
-            "keywords": post.tags.join(", "),
-            "articleSection": post.category,
-            "wordCount": post.content.replace(/<[^>]*>/g, '').split(' ').length,
-            "timeRequired": post.readTime
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://westernpublish.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://westernpublish.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": post.title,
+                "item": shareUrl
+              }
+            ]
           })}
         </script>
       </Helmet>

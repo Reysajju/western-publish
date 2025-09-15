@@ -13,6 +13,10 @@ export interface BlogPost {
   image: string;
   imageAlt: string;
   featured: boolean;
+  lastModified?: string;
+  readingTime?: number;
+  wordCount?: number;
+  category_slug?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -117,6 +121,10 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Author deciding between traditional and self-publishing paths',
     featured: true,
+    lastModified: '2025-01-15',
+    readingTime: 8,
+    wordCount: 2500,
+    category_slug: 'publishing',
   },
   {
     id: 'book-marketing-strategies-2025',
@@ -235,6 +243,10 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Book marketing strategy planning session with analytics and social media',
     featured: true,
+    lastModified: '2025-01-08',
+    readingTime: 12,
+    wordCount: 3800,
+    category_slug: 'marketing',
   },
   {
     id: 'common-editing-mistakes-authors-make',
@@ -356,6 +368,10 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Editor reviewing manuscript with red pen and notes',
     featured: false,
+    lastModified: '2025-01-01',
+    readingTime: 10,
+    wordCount: 3200,
+    category_slug: 'writing',
   },
   {
     id: 'ebook-ghostwriting-services-complete-guide-2025',
@@ -692,5 +708,9 @@ export const blogPosts: BlogPost[] = [
     image: 'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Professional ghostwriter working on eBook manuscript with digital devices showing various eBook platforms',
     featured: true,
+    lastModified: '2025-01-20',
+    readingTime: 15,
+    wordCount: 4500,
+    category_slug: 'publishing',
   },
 ];

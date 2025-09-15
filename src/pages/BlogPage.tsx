@@ -52,40 +52,174 @@ const BlogPage: React.FC = () => {
     <div className="bg-white">
       <Helmet>
         <title>Publishing & Writing Blog | Expert Tips & Industry Insights - Western Publish</title>
-        <meta name="description" content="Stay updated with the latest publishing industry insights, writing tips, and marketing strategies from Western Publish's expert team. Weekly blog posts to help authors succeed." />
+        <meta name="description" content="Stay updated with the latest publishing industry insights, writing tips, and marketing strategies from Western Publish's expert team. Weekly blog posts to help authors succeed with professional advice on ghostwriting, editing, marketing, and publishing." />
         <meta name="keywords" content="publishing blog, writing tips, book marketing, author advice, publishing industry, self-publishing, traditional publishing, book editing, author platform" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="author" content="Western Publish Team" />
+        <meta name="publisher" content="Western Publish" />
+        <meta name="copyright" content="Western Publish" />
+        <meta name="language" content="English" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="revisit-after" content="3 days" />
+        <meta name="subject" content="Publishing Industry Blog, Writing Tips, Book Marketing Strategies" />
+        <meta name="abstract" content="Expert publishing industry blog with weekly insights on ghostwriting, book editing, marketing strategies, and author success tips from Western Publish's professional team." />
+        <meta name="topic" content="Publishing Industry Blog" />
+        <meta name="summary" content="Weekly blog posts covering publishing industry trends, writing tips, book marketing strategies, and author success advice from Western Publish's expert team." />
+        <meta name="classification" content="Publishing Blog, Writing Resources, Author Education" />
+        <meta name="category" content="Publishing > Blog > Industry Insights" />
+        <meta name="coverage" content="worldwide" />
+        <meta name="target" content="authors, writers, publishers" />
+        <meta name="audience" content="authors, aspiring writers, publishing professionals" />
         <link rel="canonical" href="https://westernpublish.com/blog" />
         <meta property="og:title" content="Publishing & Writing Blog | Expert Tips & Industry Insights - Western Publish" />
         <meta property="og:description" content="Stay updated with the latest publishing industry insights, writing tips, and marketing strategies from Western Publish's expert team. Weekly blog posts to help authors succeed." />
         <meta property="og:url" content="https://westernpublish.com/blog" />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Western Publish" />
+        <meta property="og:image" content="https://westernpublish.com/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Western Publish Blog - Publishing Industry Insights" />
+        <meta property="article:publisher" content="https://westernpublish.com" />
+        <meta property="article:author" content="Western Publish Team" />
+        <meta property="article:section" content="Publishing Blog" />
+        <meta property="article:tag" content="Publishing Tips" />
+        <meta property="article:tag" content="Writing Advice" />
+        <meta property="article:tag" content="Book Marketing" />
+        <meta property="article:tag" content="Author Success" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@westernpublish" />
+        <meta name="twitter:creator" content="@westernpublish" />
+        <meta name="twitter:title" content="Publishing & Writing Blog | Expert Tips & Industry Insights - Western Publish" />
+        <meta name="twitter:description" content="Stay updated with the latest publishing industry insights, writing tips, and marketing strategies from Western Publish's expert team. Weekly blog posts to help authors succeed." />
+        <meta name="twitter:image" content="https://westernpublish.com/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Western Publish Blog - Publishing Industry Insights" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
             "name": "Western Publish Blog",
-            "description": "Expert insights on publishing, writing, and book marketing from Western Publish's professional team.",
+            "description": "Expert insights on publishing, writing, and book marketing from Western Publish's professional team. Weekly blog posts covering industry trends, writing tips, and author success strategies.",
             "url": "https://westernpublish.com/blog",
+            "inLanguage": "en-US",
+            "dateCreated": "2018-01-01",
+            "dateModified": new Date().toISOString(),
+            "keywords": "publishing blog, writing tips, book marketing, author advice, publishing industry, ghostwriting, book editing",
+            "about": {
+              "@type": "Thing",
+              "name": "Book Publishing Industry",
+              "description": "Professional book publishing services and industry insights"
+            },
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Authors, Writers, Publishing Professionals"
+            },
             "publisher": {
               "@type": "Organization",
               "name": "Western Publish",
               "url": "https://westernpublish.com",
-              "logo": "https://westernpublish.com/favicon.svg"
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://westernpublish.com/favicon.svg",
+                "width": 60,
+                "height": 60
+              }
+            },
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": blogPosts.map((post, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "BlogPosting",
+                  "headline": post.title,
+                  "url": `https://westernpublish.com/blog/${post.id}`,
+                  "datePublished": post.publishedDate,
+                  "author": {
+                    "@type": "Person",
+                    "name": post.author,
+                    "jobTitle": post.authorRole
+                  },
+                  "image": post.image,
+                  "description": post.excerpt
+                }
+              }))
             },
             "blogPost": blogPosts.map(post => ({
               "@type": "BlogPosting",
               "headline": post.title,
               "description": post.excerpt,
+              "articleBody": post.content.replace(/<[^>]*>/g, '').substring(0, 500) + "...",
+              "wordCount": post.content.replace(/<[^>]*>/g, '').split(' ').length,
+              "timeRequired": post.readTime,
+              "inLanguage": "en-US",
+              "isAccessibleForFree": true,
+              "genre": post.category,
               "author": {
                 "@type": "Person",
                 "name": post.author,
-                "jobTitle": post.authorRole
+                "jobTitle": post.authorRole,
+                "worksFor": {
+                  "@type": "Organization",
+                  "name": "Western Publish"
+                }
               },
               "datePublished": post.publishedDate,
-              "image": post.image,
+              "dateModified": post.publishedDate,
+              "image": {
+                "@type": "ImageObject",
+                "url": post.image,
+                "width": 1260,
+                "height": 750,
+                "caption": post.imageAlt
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Western Publish",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://westernpublish.com/favicon.svg",
+                  "width": 60,
+                  "height": 60
+                }
+              },
               "url": `https://westernpublish.com/blog/${post.id}`,
-              "keywords": post.tags.join(", ")
+              "keywords": post.tags.join(", "),
+              "articleSection": post.category,
+              "about": {
+                "@type": "Thing",
+                "name": post.category,
+                "description": `${post.category} insights and advice for authors`
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://westernpublish.com/blog/${post.id}`
+              }
             }))
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://westernpublish.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://westernpublish.com/blog"
+              }
+            ]
           })}
         </script>
       </Helmet>

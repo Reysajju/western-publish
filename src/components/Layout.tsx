@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BookOpen, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import Newsletter from './Newsletter';
 
 interface LayoutProps {
@@ -54,6 +55,29 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-primary">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Western Publish",
+            "url": "https://westernpublish.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://westernpublish.com/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Western Publish",
+              "logo": "https://westernpublish.com/favicon.svg"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Navigation */}
       <nav className="bg-dark shadow-lg sticky top-0 z-50 border-b border-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +86,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
                 <BookOpen className="h-8 w-8 text-accent-blue" />
-                <span className="text-xl font-bold text-neutral-white">Western Publish</span>
+                <span className="text-xl font-bold text-neutral-white" itemProp="name">Western Publish</span>
               </Link>
             </div>
 

@@ -69,12 +69,29 @@ const LandingPage: React.FC = () => {
     <div className="bg-white">
       <Helmet>
         <title>What is Western Publish? | Your Partner in Publishing Success</title>
-        <meta name="description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers." />
+        <meta name="description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers. 500+ books published, 98% client satisfaction." />
         <meta name="keywords" content="what is western publish, ghostwriting, book publishing, book marketing, author services, western publishing llc" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://westernpublish.com" />
         <meta property="og:title" content="What is Western Publish? | Your Partner in Publishing Success" />
-        <meta property="og:description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers." />
+        <meta property="og:description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. As a dba of Western Publishing LLC, we turn ideas into bestsellers. 500+ books published, 98% client satisfaction." />
         <meta property="og:url" content="https://westernpublish.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Western Publish" />
+        <meta property="og:image" content="https://westernpublish.com/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Western Publish - Professional Book Publishing Services" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@westernpublish" />
+        <meta name="twitter:creator" content="@westernpublish" />
+        <meta name="twitter:title" content="What is Western Publish? | Your Partner in Publishing Success" />
+        <meta name="twitter:description" content="What is Western Publish? We are a premier partner for authors, offering expert ghostwriting, publishing, and marketing services. 500+ books published, 98% client satisfaction." />
+        <meta name="twitter:image" content="https://westernpublish.com/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Western Publish - Professional Book Publishing Services" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -82,7 +99,43 @@ const LandingPage: React.FC = () => {
             "name": "Western Publish",
             "description": "Premier book publishing services including ghostwriting, editing, marketing and publishing.",
             "url": "https://westernpublish.com",
-            "logo": "https://westernpublish.com/favicon.svg",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://westernpublish.com/favicon.svg",
+              "width": 60,
+              "height": 60
+            },
+            "foundingDate": "2018",
+            "numberOfEmployees": "20-50",
+            "slogan": "Your Complete Publishing Partner",
+            "areaServed": "Worldwide",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Publishing Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Professional Ghostwriting"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Book Publishing"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Book Marketing"
+                  }
+                }
+              ]
+            },
             "potentialAction": {
               "@type": "SearchAction",
               "target": {
@@ -93,8 +146,25 @@ const LandingPage: React.FC = () => {
             },
             "sameAs": [
               "https://twitter.com/westernpublish",
-              "https://www.linkedin.com/company/western-publish"
+              "https://www.linkedin.com/company/western-publish",
+              "https://facebook.com/westernpublish",
+              "https://instagram.com/westernpublish"
             ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+1-505-396-2071",
+              "contactType": "customer service",
+              "email": "publish@westernpublish.com",
+              "availableLanguage": ["English"]
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1209 MOUNTAIN ROAD PL NE STE R",
+              "addressLocality": "ALBUQUERQUE",
+              "addressRegion": "NM",
+              "postalCode": "87110",
+              "addressCountry": "US"
+            },
             "offers": {
               "@type": "AggregateOffer",
               "offers": [
@@ -103,7 +173,11 @@ const LandingPage: React.FC = () => {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Professional Ghostwriting",
-                    "description": "Expert writers who bring your ideas to life with compelling, authentic content."
+                    "description": "Expert writers who bring your ideas to life with compelling, authentic content.",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Western Publish"
+                    }
                   }
                 },
                 {
@@ -111,7 +185,11 @@ const LandingPage: React.FC = () => {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Complete Publishing Solutions",
-                    "description": "End-to-end publishing services from manuscript to market-ready book."
+                    "description": "End-to-end publishing services from manuscript to market-ready book.",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Western Publish"
+                    }
                   }
                 },
                 {
@@ -119,7 +197,11 @@ const LandingPage: React.FC = () => {
                   "itemOffered": {
                     "@type": "Service",
                     "name": "Strategic Marketing",
-                    "description": "Data-driven marketing campaigns to connect with target readers effectively."
+                    "description": "Data-driven marketing campaigns to connect with target readers effectively.",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Western Publish"
+                    }
                   }
                 }
               ]
@@ -127,7 +209,9 @@ const LandingPage: React.FC = () => {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "200"
+              "reviewCount": "500",
+              "bestRating": "5",
+              "worstRating": "1"
             }
           })}
         </script>

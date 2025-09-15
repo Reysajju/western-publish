@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
+import BlogPage from './pages/BlogPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
@@ -11,6 +12,7 @@ import EditingPage from './pages/services/EditingPage';
 import MarketingPage from './pages/services/MarketingPage';
 import PublishingPage from './pages/services/PublishingPage';
 import ServicePage from './pages/services/ServicePage';
+import BlogPostPage from './pages/BlogPostPage';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/terms" element={<TermsPage />} />

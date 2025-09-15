@@ -47,6 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         { name: 'Email / Cold Outreach', href: '/services/email-cold-outreach' },
       ]
     },
+    { name: 'Blog', href: '/blog', current: location.pathname === '/blog' || location.pathname.startsWith('/blog/') },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
   ];
@@ -225,6 +226,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </h3>
               <ul className="space-y-2">
                 <li><Link to="/about" className="text-neutral-medium hover:text-accent-blue">About</Link></li>
+                <li><Link to="/blog" className="text-neutral-medium hover:text-accent-blue">Blog</Link></li>
                 <li><Link to="/contact" className="text-neutral-medium hover:text-accent-blue">Contact</Link></li>
                 <li><Link to="/privacy" className="text-neutral-medium hover:text-accent-blue">Privacy Policy</Link></li>
                 <li><Link to="/terms" className="text-neutral-medium hover:text-accent-blue">Terms of Service</Link></li>

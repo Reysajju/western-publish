@@ -465,6 +465,17 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
+    <style>
+      @media (max-width: 600px) {
+        vapi-widget {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 70%;
+        }
+      }
+    </style>
     <vapi-widget
       public-key="f524713a-fada-4f41-ad6b-5f1a27503bfc"
       assistant-id="03ed17f9-48c4-49a2-90c0-a03f362d278d"
@@ -477,7 +488,7 @@
       border-radius="large"
       size="full"
       position="bottom-right"
-      title="TALK WITH Me"
+      title="Talk Wtih Marques"
       start-button-text="Start"
       end-button-text="End Chat"
       chat-first-message="Hey, How can I help you today?"

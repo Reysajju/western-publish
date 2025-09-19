@@ -91,13 +91,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navigation.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.dropdown ? (
                     <>
                       <button
-                        className={`px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center space-x-1 ${
+                        className={`px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center space-x-1 hover:text-accent-blue ${
                           item.current
                             ? 'text-accent-blue border-b-2 border-accent-blue'
                             : 'text-neutral-light hover:text-accent-blue'
@@ -108,12 +108,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      <div className="absolute top-full left-0 mt-1 w-56 bg-dark-light rounded-lg shadow-lg border border-secondary opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto">
+                      <div className="absolute top-full left-0 mt-1 w-64 bg-dark-light rounded-lg shadow-xl border border-secondary opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 max-h-96 overflow-y-auto">
                         {item.dropdown.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.name}
                             to={dropdownItem.href}
-                            className="block px-4 py-3 text-sm text-neutral-light hover:bg-secondary hover:text-accent-blue first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
+                            className="block px-4 py-3 text-sm text-neutral-light hover:bg-secondary hover:text-accent-blue first:rounded-t-lg last:rounded-b-lg transition-colors duration-200 border-b border-secondary/30 last:border-b-0"
                           >
                             {dropdownItem.name}
                           </Link>
@@ -123,7 +123,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   ) : (
                     <Link
                       to={item.href}
-                      className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                      className={`px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-accent-blue ${
                         item.current
                           ? 'text-accent-blue border-b-2 border-accent-blue'
                           : 'text-neutral-light hover:text-accent-blue'
@@ -137,7 +137,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center">
+            <div className="md:hidden flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-neutral-light hover:text-accent-blue"
@@ -149,8 +149,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
+        <div className={`md:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          <div className="bg-dark-light border-t border-secondary">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-light border-t border-secondary">
               {navigation.map((item) => (
                 <div key={item.name}>
@@ -194,7 +194,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </nav>
 
       {/* Main Content */}

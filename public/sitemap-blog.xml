@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Blog Main Page -->
+  <url>
+    <loc>https://westernpublish.com/blog</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Featured Blog Posts -->
+  <url>
+    <loc>https://westernpublish.com/blog/self-publishing-vs-traditional-publishing-2025</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-15</news:publication_date>
+      <news:title>Self-Publishing vs Traditional Publishing in 2025: Which Path is Right for You?</news:title>
+      <news:keywords>self-publishing, traditional publishing, author advice, publishing industry, book publishing</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg</image:loc>
+      <image:title>Self-Publishing vs Traditional Publishing Decision</image:title>
+      <image:caption>Author deciding between traditional and self-publishing paths</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://westernpublish.com/blog/book-marketing-strategies-2025</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-08</news:publication_date>
+      <news:title>10 Proven Book Marketing Strategies That Actually Work in 2025</news:title>
+      <news:keywords>book marketing, author platform, social media marketing, email marketing, book launch</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg</image:loc>
+      <image:title>Book Marketing Strategy Planning</image:title>
+      <image:caption>Book marketing strategy planning session with analytics and social media</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://westernpublish.com/blog/ebook-ghostwriting-services-complete-guide-2025</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-20</news:publication_date>
+      <news:title>eBook Ghostwriting Services: The Complete Guide to Digital Publishing Success in 2025</news:title>
+      <news:keywords>ebook ghostwriting, digital publishing, ghostwriting services, ebook marketing, self-publishing</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg</image:loc>
+      <image:title>eBook Ghostwriting Services</image:title>
+      <image:caption>Professional ghostwriter working on eBook manuscript with digital devices</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://westernpublish.com/blog/common-editing-mistakes-authors-make</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-01</news:publication_date>
+      <news:title>7 Common Editing Mistakes That Make Your Book Look Unprofessional</news:title>
+      <news:keywords>editing mistakes, professional editing, manuscript editing, book editing, writing tips</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg</image:loc>
+      <image:title>Professional Book Editing</image:title>
+      <image:caption>Editor reviewing manuscript with red pen and notes</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

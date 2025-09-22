@@ -73,7 +73,7 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg</image:loc>
-      <image:title>Professional Book Editing Services - Western Publish</image:image>
+      <image:title>Professional Book Editing Services - Western Publish</image:title>
       <image:caption>Developmental editing, line editing, copy editing, and proofreading services</image:caption>
     </image:image>
   </url>
@@ -436,7 +436,7 @@
     </news:news>
     <image:image>
       <image:loc>https://images.pexels.com/photos/3769999/pexels-photo-3769999.jpeg</image:loc>
-      <image:title>Professional Book Editing</image:image>
+      <image:title>Professional Book Editing</image:title>
       <image:caption>Editor reviewing manuscript with red pen and notes</image:caption>
     </image:image>
   </url>

@@ -11,6 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
@@ -91,12 +92,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden lg:flex items-center space-x-6">
               {navigation.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.dropdown ? (
                     <>
                       <button
+                        onMouseEnter={() => setIsServicesOpen(true)}
+                        onMouseLeave={() => setIsServicesOpen(false)}
                         className={`px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center space-x-1 hover:text-accent-blue ${
                           item.current
                             ? 'text-accent-blue border-b-2 border-accent-blue'
@@ -108,7 +111,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      <div className="absolute top-full left-0 mt-1 w-64 bg-dark-light rounded-lg shadow-xl border border-secondary opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 max-h-96 overflow-y-auto">
+                      <div 
+                        className={`absolute top-full left-0 mt-1 w-64 bg-dark-light rounded-lg shadow-xl border border-secondary transition-all duration-300 z-50 max-h-96 overflow-y-auto ${
+                          isServicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                        }`}
+                        onMouseEnter={() => setIsServicesOpen(true)}
+                        onMouseLeave={() => setIsServicesOpen(false)}
+                      >
                         {item.dropdown.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.name}
@@ -137,7 +146,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-neutral-light hover:text-accent-blue"
@@ -149,7 +158,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+        <div className={`lg:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           <div className="bg-dark-light border-t border-secondary">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-light border-t border-secondary">
               {navigation.map((item) => (

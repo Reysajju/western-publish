@@ -139,7 +139,7 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <motion.div 
-              className="bg-white rounded-xl p-8 shadow-2xl"
+              className="bg-white rounded-xl p-8 shadow-2xl order-2 lg:order-1"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -164,7 +164,7 @@ const ContactPage: React.FC = () => {
                     Don't fill this out if you're human: <input name="bot-field" />
                   </label>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                       Full Name *
@@ -193,7 +193,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                       Phone Number
@@ -286,7 +286,7 @@ const ContactPage: React.FC = () => {
             </motion.div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-8 order-1 lg:order-2">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">How to Get in Touch</h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8">
@@ -295,7 +295,7 @@ const ContactPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
                 {contactInfo.map((info, index) => (
                   <motion.div 
                     key={index} 
@@ -327,7 +327,7 @@ const ContactPage: React.FC = () => {
                 transition={{ duration: 0.7 }}
               >
                 <h3 className="text-2xl font-bold mb-6">Why Choose Western Publish?</h3>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="text-center">
                     <BookOpen className="h-8 w-8 text-blue-300 mx-auto mb-2" />
                     <div className="text-3xl font-bold text-blue-300">500+</div>

@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://westernpublish.com/sitemap.xml
 
-# Block any staging or private paths if needed
-# Disallow: /admin/
+Sitemap: https://www.westernpublish.com/sitemap.xml

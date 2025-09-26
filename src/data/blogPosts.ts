@@ -25,8 +25,8 @@ import {
   commonEditingMistakes,
   bookMarketingStrategies2025,
   selfPublishingVsTraditional2025,
-  huaweiVsNvidia,
-  exampleNewBlogPost
+  exampleNewBlogPost,
+  huaweiDeclaresWar
 } from './blogs';
 
 export const blogPosts: BlogPost[] = [
@@ -34,6 +34,6 @@ export const blogPosts: BlogPost[] = [
   commonEditingMistakes,
   bookMarketingStrategies2025,
   selfPublishingVsTraditional2025,
-  huaweiVsNvidia,
-  exampleNewBlogPost
+  exampleNewBlogPost,
+  huaweiDeclaresWar
 ].sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());

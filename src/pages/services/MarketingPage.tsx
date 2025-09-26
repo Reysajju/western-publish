@@ -93,6 +93,57 @@ const MarketingPage: React.FC = () => {
     },
   };
 
+  // --- FIX APPLIED HERE: Structured Data Cleanup ---
+  // The 'aggregateRating' and 'review' properties have been removed from the
+  // 'Service' schema block to resolve the "Item does not support reviews" error.
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Book Marketing Services",
+    "provider": {
+      "@type": "Organization",
+      "name": "Western Publish",
+      "url": "https://westernpublish.com",
+      "logo": "https://westernpublish.com/favicon.svg"
+    },
+    "serviceType": "Book Marketing",
+    "description": "Professional book marketing services designed to build your author brand, launch your book to bestseller status, and drive long-term sales.",
+    "offers": {
+      "@type": "AggregateOffer",
+      "offerCount": marketingServices.length.toString(),
+      "offers": marketingServices.map(service => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": service.title,
+          "description": service.description
+        },
+        "deliveryMethod": "Online Service"
+      }))
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Book Marketing Services",
+      "itemListElement": marketingServices.map(service => ({
+        "@type": "Service",
+        "name": service.title,
+        "description": service.description,
+        "offers": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "serviceOutput": service.features
+          }
+        }
+      }))
+    }
+    // REMOVED properties:
+    // "aggregateRating": { ... }
+    // "review": [ ... ]
+    // The visual testimonials on the page for users remain unchanged below.
+  };
+  // -----------------------------------------------
+
   return (
     <div className="bg-gray-50 text-gray-800">
       <Helmet>
@@ -105,68 +156,7 @@ const MarketingPage: React.FC = () => {
         <meta property="og:url" content="https://westernpublish.com/services/marketing" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Book Marketing Services",
-            "provider": {
-              "@type": "Organization",
-              "name": "Western Publish",
-              "url": "https://westernpublish.com",
-              "logo": "https://westernpublish.com/favicon.svg"
-            },
-            "serviceType": "Book Marketing",
-            "description": "Professional book marketing services designed to build your author brand, launch your book to bestseller status, and drive long-term sales.",
-            "offers": {
-              "@type": "AggregateOffer",
-              "offerCount": marketingServices.length.toString(),
-              "offers": marketingServices.map(service => ({
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": service.title,
-                  "description": service.description
-                },
-                "deliveryMethod": "Online Service"
-              }))
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Book Marketing Services",
-              "itemListElement": marketingServices.map(service => ({
-                "@type": "Service",
-                "name": service.title,
-                "description": service.description,
-                "offers": {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Service",
-                    "serviceOutput": service.features
-                  }
-                }
-              }))
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "reviewCount": "100",
-              "bestRating": "5"
-            },
-            "review": testimonials.map(testimonial => ({
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": testimonial.rating.toString(),
-                "bestRating": "5"
-              },
-              "author": {
-                "@type": "Person",
-                "name": testimonial.name,
-                "jobTitle": testimonial.role
-              },
-              "reviewBody": testimonial.content
-            }))
-          })}
+          {JSON.stringify(serviceSchema)}
         </script>
       </Helmet>
       

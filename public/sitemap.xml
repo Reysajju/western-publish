@@ -8,7 +8,7 @@
 
   <url>
     <loc>https://westernpublish.com/</loc>
-    <lastmod>2025-01-20</lastmod>
+  <lastmod>2025-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -20,7 +20,7 @@
 
   <url>
     <loc>https://westernpublish.com/about</loc>
-    <lastmod>2025-01-20</lastmod>
+  <lastmod>2025-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -32,7 +32,7 @@
 
   <url>
     <loc>https://westernpublish.com/contact</loc>
-    <lastmod>2025-01-20</lastmod>
+  <lastmod>2025-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -44,7 +44,7 @@
 
   <url>
     <loc>https://westernpublish.com/blog</loc>
-    <lastmod>2025-01-20</lastmod>
+  <lastmod>2025-10-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -56,7 +56,7 @@
 
   <url>
     <loc>https://westernpublish.com/services/ghostwriting</loc>
-    <lastmod>2025-01-20</lastmod>
+  <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -443,7 +443,7 @@
 
   <url>
     <loc>https://westernpublish.com/blog/ebook-ghostwriting-services-complete-guide-2025</loc>
-    <lastmod>2025-01-20</lastmod>
+    <lastmod>2025-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <news:news>
@@ -460,6 +460,38 @@
       <image:title>eBook Ghostwriting Services</image:title>
       <image:caption>Professional ghostwriter working on eBook manuscript with digital devices</image:caption>
     </image:image>
+  </url>
+
+  <url>
+    <loc>https://westernpublish.com/blog/example-new-blog-post</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-10-14</news:publication_date>
+      <news:title>Example New Blog Post</news:title>
+      <news:keywords>example, blog, publishing</news:keywords>
+    </news:news>
+  </url>
+
+  <url>
+    <loc>https://westernpublish.com/blog/huawei-declares-war</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Western Publish Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2025-10-14</news:publication_date>
+      <news:title>Huawei Declares War: The Three-Year Plan to Dethrone Nvidia's AI Empire</news:title>
+      <news:keywords>Huawei, Nvidia, AI, Ascend, SuperCluster</news:keywords>
+    </news:news>
   </url>
 
   <url>

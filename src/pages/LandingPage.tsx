@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { BookOpen, PenTool, Megaphone, Award, Users, CheckCircle, Edit3, Printer, Target, Star, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CalendlyButton from '../components/CalendlyButton';
 
 const LandingPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -602,12 +603,10 @@ const LandingPage: React.FC = () => {
             >
               Get Started Today
             </Link>
-            <Link 
-              to="/contact" 
-              className="bg-gray-100 text-gray-800 hover:bg-gray-200 px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 text-center"
-            >
-              Schedule a Consultation
-            </Link>
+            <CalendlyButton 
+              className="bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl text-center"
+              text="Schedule Meeting"
+            />
           </div>
         </div>
       </section>

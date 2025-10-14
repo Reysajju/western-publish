@@ -2,8 +2,9 @@ export interface ServiceContent {
   title: string;
   description: string;
   image: string;
-    imageAlt: string;
-  sections: { title: string; description: string; points: string[] }[];
+        imageAlt: string;
+    sections: { title: string; description: string; points: string[] }[];
+    faqs?: { question: string; answer: string }[];
 }
 
 export const services: Record<string, ServiceContent> = {
@@ -261,10 +262,10 @@ export const services: Record<string, ServiceContent> = {
         ]
     },
     "Google Ads": {
-        title: "Targeted Google Ads for Authors",
-        description: "Reach readers actively searching for books like yours with targeted Google Ads campaigns. We help you get your book in front of a high-intent audience to drive sales and increase visibility.",
+        title: "Targeted Google Ad Campaigns for Books | Western Publishing Company",
+        description: "Western Publish runs results-driven Google ad campaigns for books to get your title in front of high-intent readers. Our Google Ads for books strategy combines keyword research, persuasive ad copy, optimized landing pages, and continual campaign optimization so authors and publishers see measurable sales and visibility growth.",
         image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        imageAlt: "Analyst reviewing Google Ads campaign performance",
+        imageAlt: "Marketing analyst reviewing Google Ads campaign performance for a book",
         sections: [
             {
                 title: "Keyword Research",
@@ -280,6 +281,29 @@ export const services: Record<string, ServiceContent> = {
                 title: "Campaign Optimization",
                 description: "We continuously monitor and adjust your campaigns for the best possible return on investment.",
                 points: ["Bid management", "Conversion tracking", "Performance reporting", "ROI analysis"]
+            }
+        ]
+    ,
+    faqs: [
+            {
+                question: "What are Google ad campaigns for books?",
+                answer: "Google ad campaigns for books are paid search and display campaigns designed to put your book in front of readers actively searching for titles, authors, and topics. At Western Publish we target purchase-ready keywords, genre-specific search intent, and high-converting placements so your book reaches the right audience."
+            },
+            {
+                question: "How can Western Publish help with my Google Ads for books?",
+                answer: "Western Publish is a western publishing company experienced in book marketing. We build end-to-end Google Ads campaigns for books—researching keywords, creating persuasive ad copy, building optimized landing pages, setting up conversion tracking, and continually optimizing for sales and ROI. You get a campaign tailored to your book and goals."
+            },
+            {
+                question: "How do you measure success for Google ad campaigns for books?",
+                answer: "We measure success using conversion tracking (sales, pre-orders, newsletter signups), cost per conversion, return on ad spend (ROAS), and engagement metrics. Reporting is transparent and tailored to author goals, with regular optimization recommendations."
+            },
+            {
+                question: "How much do Google Ads services cost for books?",
+                answer: "Costs vary by campaign scope and ad budget. We offer flexible packages and will recommend a budget aligned with your goals and expected audience size. We'll provide a clear estimate during a free consultation."
+            },
+            {
+                question: "How quickly can I expect results from Google ad campaigns for books?",
+                answer: "Paid search can drive traffic quickly, often within days, but meaningful sales optimization typically takes 2–6 weeks as we collect data, test creatives, and refine targeting. We focus on rapid learning and steady improvement to reduce cost per sale over time."
             }
         ]
     },

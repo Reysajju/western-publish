@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BookOpen, Menu, X } from 'lucide-react';
+import CalendlyButton from './CalendlyButton';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import Newsletter from './Newsletter';
@@ -93,6 +94,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
+                            <CalendlyButton 
+                className="bg-accent-blue text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors duration-200"
+                text="Schedule Meeting →"
+              />
               {navigation.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.dropdown ? (
@@ -201,6 +206,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               >
                 Privacy Policy
               </Link>
+              <div className="px-3 py-4">
+                <CalendlyButton 
+                  className="w-full bg-accent-blue text-white px-4 py-3 rounded-lg font-medium text-base hover:bg-blue-700 transition-colors duration-200 text-center"
+                  text="Schedule a Call"
+                />
+              </div>
             </div>
           </div>
         </div>

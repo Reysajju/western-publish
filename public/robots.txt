@@ -1,12 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://westernpublish.com/sitemap.xml
-
-# Additional Sitemaps for better organization
-Sitemap: https://westernpublish.com/sitemap-services.xml
-Sitemap: https://westernpublish.com/sitemap-blog.xml
+# Sitemap index
+Sitemap: https://westernpublish.com/sitemap-index.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

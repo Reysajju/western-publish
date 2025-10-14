@@ -4,39 +4,83 @@ import { services } from './serviceData';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CalendlyButton from '../../components/CalendlyButton';
+import { Service, ServiceSection, ServiceFAQ } from './types';
 
 interface ServicePageProps {
   serviceName: string;
 }
 
+function toSlug(text: string) {
+  return (text || '')
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, '-and-')
+    .replace(/[^a-z0-9-]+/g, '-')
+    .replace(/--+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
   const [loading, setLoading] = useState(true);
-  const [service, setService] = useState(services[serviceName]);
+  const [error, setError] = useState<string | null>(null);
+  const [service, setService] = useState<Service | undefined>(undefined);
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      setService(services[serviceName]);
+    try {
+      const serviceData = services[serviceName];
+      if (!serviceData) {
+        setError(`Service "${serviceName}" not found`);
+      } else {
+        setService(serviceData);
+      }
+    } catch (err) {
+      setError('Failed to load service data');
+    } finally {
       setLoading(false);
-    }, 300); // Reduced loading time
-    return () => clearTimeout(timer);
+    }
   }, [serviceName]);
 
-  if (!service && !loading) {
-    return <div className="text-center py-20">Service not found</div>;
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <svg className="animate-spin h-12 w-12 text-blue-600 mb-4" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+        </svg>
+        <span className="text-lg text-blue-600 font-semibold">Loading {serviceName}...</span>
+      </div>
+    );
+  }
+
+  if (error || !service) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          {error || 'Service not found'}
+        </h2>
+        <Link 
+          to="/contact" 
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+        >
+          Contact Us
+        </Link>
+      </div>
+    );
   }
 
   return (
     <div>
       <Helmet>
         <title>{service?.title || serviceName} | Professional Book Services - Western Publish</title>
-        <meta name="description" content={`${service?.description || ''} Expert ${serviceName} services by Western Publish, your trusted partner in professional book publishing.`} />
-        <meta name="keywords" content={`${serviceName}, western publish, book services, ${service?.title || ''}, professional publishing services, book ${serviceName.toLowerCase()}`} />
+        <meta name="description" content={`${service?.description || ''} Western Publish (western publishing company) offers expert ${serviceName} including google ad campaigns for books, campaign setup, optimization and reporting.`} />
+        <meta name="keywords" content={`google ad campaigns for books, ${serviceName}, western publishing company, western publish, book advertising, book marketing`} />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`https://westernpublish.com/services/${serviceName.toLowerCase()}`} />
+        <link rel="canonical" href={`https://westernpublish.com/services/${toSlug(service?.title || serviceName)}`} />
         <meta property="og:title" content={`${service?.title || serviceName} | Professional Book Services - Western Publish`} />
-        <meta property="og:description" content={`${service?.description || ''} Expert ${serviceName} services by Western Publish, your trusted partner in professional book publishing.`} />
-        <meta property="og:url" content={`https://westernpublish.com/services/${serviceName.toLowerCase()}`} />
+        <meta property="og:description" content={`${service?.description || ''} Western Publish runs targeted google ad campaigns for books to boost sales and visibility.`} />
+        <meta property="og:url" content={`https://westernpublish.com/services/${toSlug(service?.title || serviceName)}`} />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -67,10 +111,26 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
             "image": service?.image,
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://westernpublish.com/services/${serviceName.toLowerCase()}`
+              "@id": `https://westernpublish.com/services/${toSlug(service?.title || serviceName)}`
             }
           })}
         </script>
+        {service?.faqs && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": service.faqs.map((f: { question: string; answer: string }) => ({
+                "@type": "Question",
+                "name": f.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": f.answer
+                }
+              }))
+            })}
+          </script>
+        )}
       </Helmet>
       {loading ? (
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
@@ -103,12 +163,15 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
                   <p className="text-lg sm:text-xl text-blue-100 leading-relaxed">
                     {service.description}
                   </p>
-                  <Link 
-                    to="/contact"
-                    className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                  >
-                    Get Started <ArrowRight className="inline ml-2 h-5 w-5" />
-                  </Link>
+                  <div className="space-x-4">
+                    <Link 
+                      to="/contact"
+                      className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                    >
+                      Get Started <ArrowRight className="inline ml-2 h-5 w-5" />
+                    </Link>
+                    <CalendlyButton className="inline-block bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl" />
+                  </div>
                 </motion.div>
                 <motion.div 
                   className="relative mt-8 lg:mt-0"
@@ -138,7 +201,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {service.sections.map((section, index) => (
+                {service?.sections?.map((section: ServiceSection, index: number) => (
                   <motion.div 
                     key={index} 
                     className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border"
@@ -155,7 +218,7 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
                     </div>
                     <p className="text-gray-600 leading-relaxed mb-4">{section.description}</p>
                     <ul className="list-disc list-inside text-gray-500 space-y-2">
-                      {section.points.map((point, i) => (
+                      {section.points?.map((point, i) => (
                         <li key={i}>{point}</li>
                       ))}
                     </ul>
@@ -164,6 +227,23 @@ const ServicePage: React.FC<ServicePageProps> = ({ serviceName }) => {
               </div>
             </div>
           </section>
+
+          {/* FAQ Section for AEO */}
+          {service?.faqs && service.faqs.length > 0 && (
+            <section id="faqs" className="py-20 bg-white">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+                <div className="space-y-6">
+                  {service.faqs.map((faq: ServiceFAQ, i: number) => (
+                    <div key={i} className="border rounded-lg p-6">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                      <p className="text-gray-600">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* CTA Section */}
           <section className="py-24 bg-white">

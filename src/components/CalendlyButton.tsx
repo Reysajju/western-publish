@@ -1,4 +1,6 @@
 import React from 'react';
+import ModernButton from './ModernButton';
+import { Calendar } from 'lucide-react';
 
 interface CalendlyButtonProps {
   className?: string;
@@ -6,21 +8,24 @@ interface CalendlyButtonProps {
 }
 
 const CalendlyButton: React.FC<CalendlyButtonProps> = ({ 
-  className = "inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl",
+  className,
   text = "Schedule a Meeting"
 }) => {
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleClick = () => {
     window.open('https://calendly.com/publish-westernpublish', '_blank');
   };
 
   return (
-    <button 
+    <ModernButton
+      variant="gradient"
+      size="md"
+      icon={Calendar}
+      iconPosition="left"
       onClick={handleClick}
       className={className}
     >
       {text}
-    </button>
+    </ModernButton>
   );
 };
 

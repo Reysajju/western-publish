@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Menu, X } from 'lucide-react';
+import { BookOpen, Menu, X, Moon, Sun, Sparkles } from 'lucide-react';
 import CalendlyButton from './CalendlyButton';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import Newsletter from './Newsletter';
+import ParticleBackground from './ParticleBackground';
+import ModernButton from './ModernButton';
+import FloatingElements from './FloatingElements';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,7 +16,23 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
 
   const navigation = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
@@ -56,7 +75,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-primary">
+    <div className={`min-h-screen transition-colors duration-500 ${isDarkMode ? 'dark bg-gradient-to-br from-secondary-950 via-secondary-900 to-primary-950' : 'bg-gradient-to-br from-secondary-50 via-white to-primary-50'}`}>
+      <ParticleBackground theme={isDarkMode ? 'dark' : 'light'} />
+      <FloatingElements className="fixed inset-0 z-0" />
+      
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -80,211 +102,337 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           })}
         </script>
       </Helmet>
-      {/* Navigation */}
-      <nav className="bg-dark shadow-lg sticky top-0 z-50 border-b border-secondary">
+
+      {/* Modern Navigation */}
+      <motion.nav 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrollY > 50 
+            ? 'glass backdrop-blur-xl shadow-glass' 
+            : 'bg-transparent'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center space-x-2">
-                <BookOpen className="h-8 w-8 text-accent-blue" />
-                <span className="text-xl font-bold text-neutral-white" itemProp="name">Western Publish</span>
+          <div className="flex justify-between h-18">
+            {/* Modern Logo */}
+            <motion.div 
+              className="flex items-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            >
+              <Link to="/" className="flex items-center space-x-3 group">
+                <motion.div 
+                  className="relative p-2 rounded-xl bg-gradient-to-br from-primary-500 to-accent-purple-600 shadow-glow"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6, ease: 'easeInOut' }}
+                >
+                  <BookOpen className="h-6 w-6 text-white" />
+                  <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-accent-orange-500 animate-pulse" />
+                </motion.div>
+                <span className="text-xl font-display font-bold gradient-text-primary" itemProp="name">
+                  Western Publish
+                </span>
               </Link>
-            </div>
+            </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-                            <CalendlyButton 
-                className="bg-accent-blue text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors duration-200"
-                text="Schedule Meeting →"
-              />
+            <div className="hidden lg:flex items-center space-x-1">
               {navigation.map((item) => (
-                <div key={item.name} className="relative group">
+                <motion.div 
+                  key={item.name} 
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                >
                   {item.dropdown ? (
-                    <>
-                      <button
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
-                        className={`px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center space-x-1 hover:text-accent-blue ${
-                          item.current
-                            ? 'text-accent-blue border-b-2 border-accent-blue'
-                            : 'text-neutral-light hover:text-accent-blue'
-                        }`}
-                      >
-                        <span>{item.name}</span>
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
+                    <div
+                      className="relative"
+                      onMouseEnter={() => setIsServicesOpen(true)}
+                      onMouseLeave={() => setIsServicesOpen(false)}
+                    >
+                      <button className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        item.current 
+                          ? 'text-primary-400 bg-white/10' 
+                          : 'text-white/80 hover:text-white hover:bg-white/5'
+                      }`}>
+                        {item.name}
                       </button>
-                      <div 
-                        className={`absolute top-full left-0 mt-1 w-64 bg-dark-light rounded-lg shadow-xl border border-secondary transition-all duration-300 z-50 max-h-96 overflow-y-auto ${
-                          isServicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                        }`}
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
-                      >
-                        {item.dropdown.map((dropdownItem) => (
-                          <Link
-                            key={dropdownItem.name}
-                            to={dropdownItem.href}
-                            className="block px-4 py-3 text-sm text-neutral-light hover:bg-secondary hover:text-accent-blue first:rounded-t-lg last:rounded-b-lg transition-colors duration-200 border-b border-secondary/30 last:border-b-0"
+                      
+                      <AnimatePresence>
+                        {isServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 mt-2 w-64 glass rounded-xl shadow-glass border border-white/20 py-2 z-50"
                           >
-                            {dropdownItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </>
+                            <div className="grid grid-cols-1 gap-1 px-2 max-h-80 overflow-y-auto">
+                              {item.dropdown.map((dropdownItem) => (
+                                <Link
+                                  key={dropdownItem.name}
+                                  to={dropdownItem.href}
+                                  className="block px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                                  onClick={() => setIsServicesOpen(false)}
+                                >
+                                  {dropdownItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ) : (
                     <Link
                       to={item.href}
-                      className={`px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-accent-blue ${
-                        item.current
-                          ? 'text-accent-blue border-b-2 border-accent-blue'
-                          : 'text-neutral-light hover:text-accent-blue'
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        item.current 
+                          ? 'text-primary-400 bg-white/10' 
+                          : 'text-white/80 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {item.name}
                     </Link>
                   )}
-                </div>
+                </motion.div>
               ))}
+              
+              {/* Theme Toggle */}
+              <motion.button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </motion.button>
+
+              <ModernButton variant="gradient" size="md" className="ml-4">
+                Schedule Meeting →
+              </ModernButton>
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center">
-              <button
+            <div className="lg:hidden flex items-center space-x-2">
+              <motion.button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </motion.button>
+              
+              <motion.button
+                type="button"
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
+                aria-label="Toggle menu"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-neutral-light hover:text-accent-blue"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-          <div className="bg-dark-light border-t border-secondary">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-light border-t border-secondary">
-              {navigation.map((item) => (
-                <div key={item.name}>
-                  {item.dropdown ? (
-                    <>
-                      <div className="px-3 py-2 text-base font-medium text-neutral-light border-b border-secondary">
-                        {item.name}
+        {/* Modern Mobile Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden glass border-t border-white/20"
+            >
+              <div className="px-4 pt-4 pb-6 space-y-2">
+                {navigation.map((item) => (
+                  <motion.div 
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {item.dropdown ? (
+                      <div className="space-y-2">
+                        <div className="px-4 py-2 text-lg font-medium text-white/90 border-b border-white/20">
+                          {item.name}
+                        </div>
+                        <div className="pl-4 space-y-1 max-h-40 overflow-y-auto">
+                          {item.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.name}
+                              to={dropdownItem.href}
+                              className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {dropdownItem.name}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                      {item.dropdown.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.name}
-                          to={dropdownItem.href}
-                          className="block px-6 py-2 text-sm text-neutral-medium hover:text-accent-blue hover:bg-secondary transition-colors duration-200"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {dropdownItem.name}
-                        </Link>
-                      ))}
-                    </>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
-                        item.current
-                          ? 'text-accent-blue bg-secondary'
-                          : 'text-neutral-medium hover:text-accent-blue hover:bg-secondary'
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </div>
-              ))}
-              <Link
-                to="/privacy"
-                className="block px-3 py-2 text-base font-medium text-neutral-medium hover:text-accent-blue hover:bg-secondary transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Privacy Policy
-              </Link>
-              <div className="px-3 py-4">
-                <CalendlyButton 
-                  className="w-full bg-accent-blue text-white px-4 py-3 rounded-lg font-medium text-base hover:bg-blue-700 transition-colors duration-200 text-center"
-                  text="Schedule a Call"
-                />
+                    ) : (
+                      <Link
+                        to={item.href}
+                        className={`block px-4 py-3 text-lg font-medium rounded-lg transition-all duration-200 ${
+                          item.current
+                            ? 'text-primary-400 bg-white/10'
+                            : 'text-white/80 hover:text-white hover:bg-white/5'
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </motion.div>
+                ))}
+                
+                <motion.div 
+                  className="pt-4 border-t border-white/20"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  <ModernButton 
+                    variant="gradient" 
+                    size="lg" 
+                    className="w-full"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Schedule Meeting →
+                  </ModernButton>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
 
-      {/* Main Content */}
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={location.pathname}
+      {/* Main Content with modern wrapper */}
+      <main className="relative z-10 pt-20">
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="min-h-screen"
         >
           {children}
-        </motion.main>
-      </AnimatePresence>
+        </motion.div>
+      </main>
 
       <Newsletter />
 
-      {/* Footer */}
-      <footer className="bg-dark text-neutral-white">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="col-span-1 sm:col-span-2 lg:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <BookOpen className="h-8 w-8 text-accent-blue" />
-                <span className="text-xl font-bold">Western Publish</span>
-              </div>
-              <p className="text-neutral-medium mb-4">
-                From ghostwriting to publishing and marketing, we cover everything your literary journey needs.
-              </p>
-              <div className="text-neutral-medium text-sm space-y-1">
-                <p>📞 +1 (505) 396-2071 ext 800</p>
-                <p>✉️ publish@westernpublish.com</p>
-                <p>📍 Albuquerque, NM</p>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-neutral-light tracking-wider uppercase mb-4">
-                Services
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-2">
-                {(navigation.find(nav => nav.name === 'Services')?.dropdown || []).map((service) => (
-                  <div key={service.name}>
-                    <Link to={service.href} className="text-neutral-medium hover:text-accent-blue text-sm">
-                      {service.name}
-                    </Link>
+      {/* Modern Footer */}
+      <motion.footer 
+        className="relative z-10 mt-20"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="glass border-t border-white/20">
+          <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="col-span-1 sm:col-span-2 lg:col-span-2">
+                <motion.div 
+                  className="flex items-center space-x-3 mb-6"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                >
+                  <div className="relative p-2 rounded-xl bg-gradient-to-br from-primary-500 to-accent-purple-600 shadow-glow">
+                    <BookOpen className="h-6 w-6 text-white" />
+                    <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-accent-orange-500 animate-pulse" />
                   </div>
-                ))}
+                  <span className="text-2xl font-display font-bold gradient-text-primary">Western Publish</span>
+                </motion.div>
+                <p className="text-white/70 mb-6 text-lg leading-relaxed">
+                  From ghostwriting to publishing and marketing, we cover everything your literary journey needs with cutting-edge innovation.
+                </p>
+                <div className="text-white/60 space-y-2">
+                  <p className="flex items-center space-x-2">
+                    <span className="text-primary-400">📞</span>
+                    <span>+1 (505) 396-2071 ext 800</span>
+                  </p>
+                  <p className="flex items-center space-x-2">
+                    <span className="text-primary-400">✉️</span>
+                    <span>publish@westernpublish.com</span>
+                  </p>
+                  <p className="flex items-center space-x-2">
+                    <span className="text-primary-400">📍</span>
+                    <span>Albuquerque, NM</span>
+                  </p>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-white/90 tracking-wider uppercase mb-4">
+                  Services
+                </h3>
+                <div className="grid grid-cols-1 gap-2 max-h-60 overflow-y-auto">
+                  {(navigation.find(nav => nav.name === 'Services')?.dropdown || []).slice(0, 8).map((service) => (
+                    <motion.div 
+                      key={service.name}
+                      whileHover={{ x: 5 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    >
+                      <Link 
+                        to={service.href} 
+                        className="text-white/70 hover:text-primary-400 text-sm transition-colors duration-200 block"
+                      >
+                        {service.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-white/90 tracking-wider uppercase mb-4">
+                  Company
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    { name: 'About', href: '/about' },
+                    { name: 'Blog', href: '/blog' },
+                    { name: 'Contact', href: '/contact' },
+                    { name: 'Privacy Policy', href: '/privacy' },
+                    { name: 'Terms of Service', href: '/terms' },
+                    { name: 'Refund Policy', href: '/refund' },
+                  ].map((item) => (
+                    <li key={item.name}>
+                      <motion.div
+                        whileHover={{ x: 5 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      >
+                        <Link 
+                          to={item.href} 
+                          className="text-white/70 hover:text-primary-400 transition-colors duration-200"
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold text-neutral-light tracking-wider uppercase mb-4">
-                Company
-              </h3>
-              <ul className="space-y-2">
-                <li><Link to="/about" className="text-neutral-medium hover:text-accent-blue">About</Link></li>
-                <li><Link to="/blog" className="text-neutral-medium hover:text-accent-blue">Blog</Link></li>
-                <li><Link to="/contact" className="text-neutral-medium hover:text-accent-blue">Contact</Link></li>
-                <li><Link to="/privacy" className="text-neutral-medium hover:text-accent-blue">Privacy Policy</Link></li>
-                <li><Link to="/terms" className="text-neutral-medium hover:text-accent-blue">Terms of Service</Link></li>
-                <li><Link to="/refund" className="text-neutral-medium hover:text-accent-blue">Refund Policy</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 border-t border-secondary pt-8 text-center sm:text-left">
-            <p className="text-neutral-medium text-sm text-center">
-              © 2025 Western Publish. All rights reserved.
-            </p>
+            <motion.div 
+              className="mt-12 border-t border-white/20 pt-8 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-white/60 text-sm">
+                © 2025 Western Publish. All rights reserved. Built with modern technology for the future of publishing.
+              </p>
+            </motion.div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 };
